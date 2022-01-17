@@ -14,7 +14,9 @@ import time
 import subprocess
 import shutil
 from git.repo import Repo
-import errno, os, stat, shutil
+srcdir = "/tmp/update/book"
+dstdir = "/tmp/blog"
+
 
 APP_ID = "cli_a15bebebc5b8d00b"
 APP_SECRET = "pMJXu20Pn2L2fmFIvwSrZcPmZbRnmotd"
@@ -27,89 +29,36 @@ ret_card = {
     }]
 }
 
-def handle_remove_read_only(func, path, exc):
-    excvalue = exc[1]
-    if func in (os.rmdir, os.remove, os.unlink) and excvalue.errno == errno.EACCES:
-      os.chmod(path, stat.S_IRWXU| stat.S_IRWXG| stat.S_IRWXO) # 0777
-      func(path)
-    else:
-      raise
+def killport(port):
+	command='''kill -9 $(netstat -nlp | grep :'''+str(port)+''' | awk '{print $7}' | awk -F"/" '{ print $1 }')'''
+	os.system(command)
 
-def kill_port_process(port):
-    # 根据端口号杀死进程
-    
-    ret = os.popen("netstat -nao|findstr " + str(port))
-    str_list = ret.read()
 
-    if not str_list:
-        print('端口未使用')
-        return
-    # 只关闭处于LISTENING的端口
-    if 'TCP' in str_list:
-        ret_list = str_list.replace(' ', '')
-        ret_list = re.split('\n', ret_list)
-        listening_list = [rl.split('LISTENING') for rl in ret_list]
-        process_pids = [ll[1] for ll in listening_list if len(ll) >= 2]
-        process_pid_set = set(process_pids)
-        for process_pid in process_pid_set:
-            os.popen('taskkill /pid ' + str(process_pid) + ' /F')
-            print(port, '端口已被释放')
-            time.sleep(1)
-        
-    elif 'UDP' in str_list:
-        ret_list = re.split(' ', str_list)
-        process_pid = ret_list[-1].strip()
-        if process_pid:
-            os.popen('taskkill /pid ' + str(process_pid) + ' /F')
-            print('端口已被释放')
-        else:
-            print("端口未被使用")
-
-updatedir = "E:\\fei_window\\update\\book"
-rundevdir = "E:\\fei_window\\blog" 
-newrundevdir = "E:\\fei_window\\blog"
-copysrcdir = "E:\\fei_window\\update\\book\\blog\\"  
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
-        print (os.getcwd()) 
         self.send_response(200)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
         self.wfile.write("ok".encode())
- 
         try:
-            Repo.clone_from(url='git://github.com/isa390/web_blog.git', to_path=copysrcdir)
+            Repo.clone_from(url='git://github.com/isa390/web_blog.git', to_path='/tmp/update/book')
         except OSError as e:
             print(e)
         else:
             print("download successfully")
-            kill_port_process(5000)
+            killport(5000)
             print("ok")
-       
+
         try:
-            shutil.rmtree(rundevdir,onerror=handle_remove_read_only)  
-        except OSError as e:
-            print(e)
-        else:
-            print("The directory20 is deleted successfully")
-        try:
-            shutil.rmtree(rundevdir)  
+            shutil.rmtree(dstdir)
         except OSError as e:
             print(e)
         else:
             print("The directory is deleted successfully")
 
-        shutil.move(copysrcdir, rundevdir)
-        try:
-            shutil.rmtree(updatedir, onerror=handle_remove_read_only)
-        except OSError as e:
-            print(e)
-        else:
-            print("The update directory is deleted successfully")
-
-        os.chdir(newrundevdir) 
-        print (os.getcwd())
-        subprocess.Popen(['python', 'blog.py'])
+        shutil.move(srcdir, dstdir)
+        os.chdir("/tmp/blog/blog") 
+        subprocess.Popen(['python3', '/tmp/blog/blog/blog.py'])
         print("启动新的进程")
         return
 
