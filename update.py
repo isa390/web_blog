@@ -91,7 +91,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         except OSError as e:
             print(e)
         else:
-            print("The directory is deleted successfully")
+            print("The directory2 is deleted successfully")
         try:
             shutil.rmtree(rundevdir)  
         except OSError as e:
