@@ -77,7 +77,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.wfile.write("ok".encode())
  
         try:
-            Repo.clone_from(url='git://github.com/isa390/web_blog.git', to_path=updatedir)
+            Repo.clone_from(url='git://github.com/isa390/web_blog.git', to_path=copysrcdir)
         except OSError as e:
             print(e)
         else:
