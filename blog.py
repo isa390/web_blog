@@ -7,7 +7,7 @@ import json
 from urllib import request, parse
 import cgi
 import requests
-
+import os
 APP_ID = "cli_a15bebebc5b8d00b"
 APP_SECRET = "pMJXu20Pn2L2fmFIvwSrZcPmZbRnmotd"
 APP_VERIFICATION_TOKEN = "hxaTTQZc9re73RE4bsKaEcCvLxLr1NIY"
@@ -34,6 +34,8 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.wfile.write("ok".encode())
             if ctype.split("/")[0] == 'ping':
                 return
+            os.chdir("E:\\fei_window\\update") 
+            print (os.getcwd())
             url = 'http://127.0.0.1:5001'
             myobj = {'somekey': 'somevalue'}
             x = requests.post(url, data = myobj)
