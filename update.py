@@ -75,7 +75,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
         self.wfile.write("ok".encode())
-
+ 
         try:
             Repo.clone_from(url='git://github.com/isa390/web_blog.git', to_path=updatedir)
         except OSError as e:
