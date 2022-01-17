@@ -67,6 +67,7 @@ def kill_port_process(port):
 
 updatedir = "E:\\fei_window\\update\\book"
 rundevdir = "E:\\fei_window\\blog"
+newrundevdir = "E:\\fei_window\\blog\\blog"
 copysrcdir = "E:\\fei_window\\update\\book\\blog"  
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -86,7 +87,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("ok")
 
         try:
-            shutil.rmtree(rundevdir)
+            shutil.rmtree(rundevdir, onerror=handle_remove_read_only)
         except OSError as e:
             print(e)
         else:
@@ -100,7 +101,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         else:
             print("The update directory is deleted successfully")
 
-        os.chdir(rundevdir) 
+        os.chdir(newrundevdir) 
         print (os.getcwd())
         subprocess.Popen(['python', 'blog.py'])
         print("启动新的进程")
