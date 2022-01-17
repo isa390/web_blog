@@ -87,7 +87,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("ok")
        
         try:
-            shutil.rmtree(rundevdir, onerror=handle_remove_read_only)
+            shutil.rmtree(rundevdir)
         except OSError as e:
             print(e)
         else:
