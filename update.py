@@ -66,7 +66,7 @@ def kill_port_process(port):
             print("端口未被使用")
 
 updatedir = "E:\\fei_window\\update\\book"
-rundevdir = "E:\\fei_window\\blog"
+rundevdir = "E:\\fei_window\\blog" 
 newrundevdir = "E:\\fei_window\\blog"
 copysrcdir = "E:\\fei_window\\update\\book\\blog\\"  
 class RequestHandler(BaseHTTPRequestHandler):
