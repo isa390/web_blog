@@ -186,7 +186,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         code = rsp_dict.get("code", -1)
         if code != 0:
             print("send message error, code = ", code, ", msg =", rsp_dict.get("msg", ""))
-
+ 
 def run():
     port = 5001
     server_address = ('', port)
