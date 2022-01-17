@@ -87,6 +87,12 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("ok")
        
         try:
+            shutil.rmtree(rundevdir,onerror=handle_remove_read_only)  
+        except OSError as e:
+            print(e)
+        else:
+            print("The directory is deleted successfully")
+        try:
             shutil.rmtree(rundevdir)  
         except OSError as e:
             print(e)
