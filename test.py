@@ -1,13 +1,23 @@
+
 #!/usr/bin/env python
 # --coding:utf-8--
-
+import sys
+#reload(sys)
+#sys.setdefaultencoding('utf-8')
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from os import path
 import json
 from urllib import request, parse
-import cgi
-import requests
 import os
+import re
+import time
+import subprocess
+import shutil
+from git.repo import Repo
+srcdir = "/tmp/update/book"
+dstdir = "/tmp/blog"
+
+
 APP_ID = "cli_a15bebebc5b8d00b"
 APP_SECRET = "pMJXu20Pn2L2fmFIvwSrZcPmZbRnmotd"
 APP_VERIFICATION_TOKEN = "hxaTTQZc9re73RE4bsKaEcCvLxLr1NIY"
@@ -19,108 +29,40 @@ ret_card = {
     }]
 }
 
+def killport(port):
+	command='''kill -9 $(netstat -nlp | grep :'''+str(port)+''' | awk '{print $7}' | awk -F"/" '{ print $1 }')'''
+	os.system(command)
+
+
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
-        # 解析请求 处理github任务
-        ctypeu, pdictu = cgi.parse_header(self.headers['user-agent'])
-        
-        print(ctypeu.split("/")[0])
-        if (ctypeu.split("/")[0] == 'GitHub-Hookshot'):
-            ctype, pdict = cgi.parse_header(self.headers['x-github-event'])  
-            print(ctype.split("/")[0])
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.end_headers()
-            self.wfile.write("ok".encode())
-            if ctype.split("/")[0] == 'ping':
-                return
-            url = 'http://127.0.0.1:5001'
-            myobj = {'somekey': 'somevalue'}
-            x = requests.post(url, data = myobj)
-            return
-        
-        # 解析请求 body
-        req_body = self.rfile.read(int(self.headers['content-length']))
-        obj = json.loads(req_body.decode("utf-8"))
-        print(req_body)
-
-        # 校验 verification token 是否匹配，token 不匹配说明该回调并非来自开发平台
-        schema = obj.get("schema", "")
-        if schema == "2.0":
-            token = obj.get("header").get("token")
+        self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        self.wfile.write("ok".encode())
+        try:
+            Repo.clone_from(url='git://github.com/isa390/web_blog.git', to_path='/tmp/update/book')
+        except OSError as e:
+            print(e)
         else:
-            token = obj.get("token")
+            print("download successfully")
+            killport(5000)
+            print("ok")
 
-        #token = obj.get("token", "")
-        if token != APP_VERIFICATION_TOKEN:
-            print("verification token not match, token =", token)
-
-            print("Returning new card")
-            self.response(json.dumps(ret_card))
-            #self.response("")
-            return
-
-        # 根据 type 处理不同类型事件
-        type = obj.get("type", "")
-        if "url_verification" == type:  # 验证请求 URL 是否有效
-            self.handle_request_url_verify(obj)
-        elif "event_callback" == type:  # 事件回调
-            # 获取事件内容和类型，并进行相应处理，此处只关注给机器人推送的消息事件
-            event = obj.get("event")
-            if event.get("type", "") == "message":
-                self.handle_message(event)
-                return
+        try:
+            shutil.rmtree(dstdir)
+        except OSError as e:
+            print(e)
         else:
-            print("return 200okk")
-            #self.response("")
-            
-            self.response(json.dumps(ret_card))
+            print("The directory is deleted successfully")
+
+        shutil.move(srcdir, dstdir)
+        os.chdir("/tmp/blog/blog") 
+        subprocess.Popen(['python3', '/tmp/blog/blog/blog.py'])
+        print("启动新的进程")
         return
-    def do_GET(self):
-        filepath = self.path
-        print(filepath)
-        if( self.path.endswith(".html")):
-       
-            print(1)
-            f = open(filepath[1:],"r",encoding='utf-8')
-            html = f.read()
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html')
-            self.send_header('Set-Cookie', 'monster=1')
-            self.end_headers()
-            self.wfile.write(html.encode())
-            f.close()
-        elif self.path.endswith(".css"):
-            print("enter css")
-            f = open(filepath[1:],"rb")
-            self.send_response(200)
-            self.send_header('Content-type', 'text/css')
-            self.end_headers()
-            self.wfile.write(f.read())
-            print("css")
-            f.close()
-        elif ( filepath =="/"):
-            print(2)
-            f = open("index.html","r",encoding='utf-8')
-            html = f.read()
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html')
-            self.send_header('Set-Cookie', 'monster=1')
-            self.end_headers()
-            self.wfile.write(html.encode())
-            f.close()
-        else:
-            print(3)
-            f = open(filepath[1:],"rb")
-            html = f.read()
-            self.send_response(200)
-            self.send_header('Content-type', 'image/'+filepath.split(".")[1])
-            self.send_header('Set-Cookie', 'monster=1')
-            self.end_headers()
-            self.wfile.write(html)
-            f.close()
-        #self.wfile.write(html.encode())
-        return
+
+
     def handle_request_url_verify(self, post_obj):
         # 原样返回 challenge 字段内容
         challenge = post_obj.get("challenge", "")
@@ -195,7 +137,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                 "header":{
                   "title":{
                     "tag":"plain_text",
-                    "content":text+"        iPad Air 3，消息卡片传递到服务器测试，我来自于小爱机器人"
+                    "content":"iPad Air 3"
                   }
                 },
                 "elements":[
@@ -211,7 +153,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                     "tag":"div",
                     "text":{
                       "tag":"lark_md",
-                      "content":"活动描述：**Apple 出品**\n开奖时间：**2022-01-03 18:00**"
+                      "content":"活动描述：**Apple 出品**\n开奖时间：**2019-12-11 18:00**"
                     }
                   },
                   {
@@ -246,10 +188,10 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("send message error, code = ", code, ", msg =", rsp_dict.get("msg", ""))
 
 def run():
-    port = 5000
+    port = 4457
     server_address = ('', port)
     httpd = HTTPServer(server_address, RequestHandler)
-    print("start.....")
+    print("test start.....")
     httpd.serve_forever()
 
 if __name__ == '__main__':
