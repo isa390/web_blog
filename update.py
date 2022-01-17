@@ -71,7 +71,7 @@ newrundevdir = "E:\\fei_window\\blog"
 copysrcdir = "E:\\fei_window\\update\\book\\blog\\"  
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
-        print (os.getcwd())
+        print (os.getcwd()) 
         self.send_response(200)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
