@@ -85,7 +85,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("download successfully")
             kill_port_process(5000)
             print("ok")
-   
+    
         try:
             shutil.rmtree(rundevdir, onerror=handle_remove_read_only)
         except OSError as e:
