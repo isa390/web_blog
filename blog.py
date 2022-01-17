@@ -25,7 +25,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         ctypeu, pdictu = cgi.parse_header(self.headers['user-agent'])
         
         print(ctypeu.split("/")[0])
-        if ctypeu.split("/")[0] == 'Github-Hookshot':
+        if (ctypeu.split("/")[0] == 'GitHub-Hookshot'):
             ctype, pdict = cgi.parse_header(self.headers['x-github-event'])  
             print(ctype.split("/")[0])
             self.send_response(200)
