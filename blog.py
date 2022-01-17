@@ -23,11 +23,11 @@ class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         # 解析请求 处理github任务
         ctypeu, pdictu = cgi.parse_header(self.headers['user-agent'])
-        ctype, pdict = cgi.parse_header(self.headers['x-github-event'])
         
         print(ctypeu.split("/")[0])
-        print(ctype.split("/")[0])
         if ctypeu.split("/")[0] == 'Github-Hookshot':
+            ctype, pdict = cgi.parse_header(self.headers['x-github-event'])  
+            print(ctype.split("/")[0])
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.end_headers()

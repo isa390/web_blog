@@ -65,9 +65,9 @@ def kill_port_process(port):
         else:
             print("端口未被使用")
 
-updatedir = "E:\\fei_window\\update"
+updatedir = "E:\\fei_window\\update\\book"
 rundevdir = "E:\\fei_window\\blog"
-copysrcdir = "E:\\fei_window\\update\\blog"
+copysrcdir = "E:\\fei_window\\update\\book\\blog"
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         print (os.getcwd())
