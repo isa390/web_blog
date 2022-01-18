@@ -146,7 +146,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_message(access_token, event.get("open_chat_id"), event.get("text"))
         #self.response("")
         
-        self.response(json.dumps(ret_card))
+        #self.response(json.dumps(ret_card))
         return
 
     def response(self, body):
