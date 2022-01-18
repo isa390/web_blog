@@ -18,8 +18,22 @@ ret_card = {
         "text": "Select"
     }]
 }
-
+global_id = ""
 class RequestHandler(BaseHTTPRequestHandler):
+    def handle_bot_message(self):
+        # 此处只处理 text 类型消息，其他类型消息忽略
+        # 调用发消息 API 之前，先要获取 API 调用凭证：tenant_access_token
+        access_token = self.get_tenant_access_token()
+        if access_token == "":
+            self.response("")
+            return
+
+        # 机器人 echo 收到的消息
+        self.send_message(access_token, global_id, "action")
+        #self.response("")
+        
+        #self.response(json.dumps(ret_card))
+        return
     def do_POST(self):
         # 解析请求 处理github任务
         ctypeu, pdictu = cgi.parse_header(self.headers['user-agent'])
@@ -56,7 +70,8 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("verification token not match, token =", token)
 
             print("Returning new card")
-            self.response(json.dumps(ret_card))
+            self.handle_bot_message()
+            #self.response(json.dumps(ret_card))
             #self.response("")
             return
 
@@ -128,6 +143,8 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.response(json.dumps(rsp))
         return
 
+
+
     def handle_message(self, event):
         # 此处只处理 text 类型消息，其他类型消息忽略
         msg_type = event.get("msg_type", "")
@@ -141,7 +158,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         if access_token == "":
             self.response("")
             return
-
+        global_id = event.get("open_chat_id")
         # 机器人 echo 收到的消息
         self.send_message(access_token, event.get("open_chat_id"), event.get("text"))
         #self.response("")
