@@ -74,7 +74,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("return 200okk")
             #self.response("")
             
-            self.response(json.dumps(ret_card))
+            #self.response(json.dumps(ret_card))
         return
     def do_GET(self):
         filepath = self.path
