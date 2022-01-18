@@ -18,7 +18,7 @@ ret_card = {
         "text": "Select"
     }]
 }
-global_id = ""
+global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
     def handle_bot_message(self):
         # 此处只处理 text 类型消息，其他类型消息忽略
@@ -160,6 +160,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.response("")
             return
         global_id = event.get("open_id")
+
         # 机器人 echo 收到的消息
         self.send_message(access_token, event.get("open_chat_id"), event.get("text"))
         #self.response("")
