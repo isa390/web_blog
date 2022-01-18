@@ -159,6 +159,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         if access_token == "":
             self.response("")
             return
+        global global_id
         global_id = event.get("open_id")
 
         # 机器人 echo 收到的消息
