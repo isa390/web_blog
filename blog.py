@@ -71,7 +71,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
             print(global_id)
             print("Returning new card")
-            self.handle_bot_message()
+            #self.handle_bot_message()
             #self.response(json.dumps(ret_card))
             #self.response("")
             return
