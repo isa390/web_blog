@@ -273,7 +273,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             "Authorization": "Bearer " + token
         }
         req_body = {
-            "open_id": open_id,
+            "chat_id": open_id,
             "msg_type":"interactive",
               "card":{
                 "header":{
