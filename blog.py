@@ -243,6 +243,12 @@ class RequestHandler(BaseHTTPRequestHandler):
                           "tag":"plain_text",
                           "content":"参加抽奖"
                         },
+                        "multi_url":{
+                            "url": "https://www.baidu.com", 
+                              "android_url": "https://developer.android.com/", 
+                              "ios_url": "lark://msgcard/unsupported_action",
+                              "pc_url": "https://www.windows.com"
+                        },
                         "type":"danger",
                         "value":{
                             "key":"value" 
