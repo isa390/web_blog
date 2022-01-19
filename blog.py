@@ -270,10 +270,16 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("send message error, code = ", code, ", msg =", rsp_dict.get("msg", ""))
 
     def send_bot_message(self, token, open_id, text):
+        # 调用发消息 API 之前，先要获取 API 调用凭证：tenant_access_token
+        access_token = self.get_tenant_access_token()
+        if access_token == "":
+            self.response("")
+            return
         url = "https://open.feishu.cn/open-apis/interactive/v1/card/update/"
 
         headers = {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + access_token
         }
         req_body = {
             "token":token,
