@@ -23,6 +23,7 @@ class RequestHandler(BaseHTTPRequestHandler):
     def handle_bot_message(self):
         # 此处只处理 text 类型消息，其他类型消息忽略
         # 调用发消息 API 之前，先要获取 API 调用凭证：tenant_access_token
+        self.response("{}")
         access_token = self.get_tenant_access_token()
         if access_token == "":
             self.response("")
@@ -243,12 +244,6 @@ class RequestHandler(BaseHTTPRequestHandler):
                           "tag":"plain_text",
                           "content":"参加抽奖"
                         },
-                        "multi_url":{
-                            "url": "https://www.baidu.com", 
-                              "android_url": "https://developer.android.com/", 
-                              "ios_url": "lark://msgcard/unsupported_action",
-                              "pc_url": "https://www.windows.com"
-                        },
                         "type":"danger",
                         "value":{
                             "key":"value" 
@@ -275,16 +270,17 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("send message error, code = ", code, ", msg =", rsp_dict.get("msg", ""))
 
     def send_bot_message(self, token, open_id, text):
-        url = "https://open.feishu.cn/open-apis/message/v4/send/"
+        url = "https://open.feishu.cn/open-apis/interactive/v1/card/update/"
 
         headers = {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + token
         }
         req_body = {
-            "chat_id": open_id,
+            "token":token,
             "msg_type":"interactive",
               "card":{
+                "open_ids":[open_id],
                 "header":{
                   "title":{
                     "tag":"plain_text",
@@ -314,7 +310,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                         "tag":"button",
                         "text":{
                           "tag":"plain_text",
-                          "content":"参加抽奖"
+                          "content":"已经更新"
                         },
                         "type":"default"
                       }
