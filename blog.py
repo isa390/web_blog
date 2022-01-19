@@ -273,8 +273,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         url = "https://open.feishu.cn/open-apis/interactive/v1/card/update/"
 
         headers = {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            "Content-Type": "application/json"
         }
         req_body = {
             "token":token,
