@@ -73,7 +73,6 @@ class RequestHandler(BaseHTTPRequestHandler):
             print(global_id)
             print(obj.get("open_id"))
             self.response(json.dumps(ret_card))
-            self.response("")
             self.send_bot_message(token, obj.get("open_id"), "action")
             print("refresh new card")
             return
