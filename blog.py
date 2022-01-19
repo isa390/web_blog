@@ -72,9 +72,10 @@ class RequestHandler(BaseHTTPRequestHandler):
 
             print(global_id)
             print("Returning new card")
-            #self.handle_bot_message()
+            print(obj.get("open_id"))
             self.response(json.dumps(ret_card))
             self.response("")
+            self.send_bot_message(token, obj.get("open_id"), "action")
             return
 
         # 根据 type 处理不同类型事件
