@@ -73,8 +73,8 @@ class RequestHandler(BaseHTTPRequestHandler):
             print(global_id)
             print("Returning new card")
             #self.handle_bot_message()
-            #self.response(json.dumps(ret_card))
-            #self.response("")
+            self.response(json.dumps(ret_card))
+            self.response("")
             return
 
         # 根据 type 处理不同类型事件
@@ -89,9 +89,9 @@ class RequestHandler(BaseHTTPRequestHandler):
                 return
         else:
             print("return 200okk")
-            #self.response("")
+            self.response("")
             
-            #self.response(json.dumps(ret_card))
+            self.response(json.dumps(ret_card))
         return
     def do_GET(self):
         filepath = self.path
