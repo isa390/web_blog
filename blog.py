@@ -71,11 +71,11 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("verification token not match, token =", token)
 
             print(global_id)
-            print("Returning new card")
             print(obj.get("open_id"))
             self.response(json.dumps(ret_card))
             self.response("")
             self.send_bot_message(token, obj.get("open_id"), "action")
+            print("refresh new card")
             return
 
         # 根据 type 处理不同类型事件
