@@ -243,7 +243,10 @@ class RequestHandler(BaseHTTPRequestHandler):
                           "tag":"plain_text",
                           "content":"参加抽奖"
                         },
-                        "type":"default"
+                        "type":"danger",
+                        "value":{
+                            "key":"value" 
+                        }
                       }
                     ]
                   }
