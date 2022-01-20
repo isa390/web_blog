@@ -20,21 +20,6 @@ ret_card = {
 }
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
-    def handle_bot_message(self):
-        # 此处只处理 text 类型消息，其他类型消息忽略
-        # 调用发消息 API 之前，先要获取 API 调用凭证：tenant_access_token
-        self.response("{}")
-        access_token = self.get_tenant_access_token()
-        if access_token == "":
-            self.response("")
-            return
-
-        # 机器人 echo 收到的消息
-        self.send_bot_message(access_token, global_id, "good done")
-        #self.response("")
-        
-        #self.response(json.dumps(ret_card))
-        return
     def do_POST(self):
         # 解析请求 处理github任务
         ctypeu, pdictu = cgi.parse_header(self.headers['user-agent'])
@@ -73,7 +58,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             print(global_id)
             print(obj.get("open_id"))
             self.response(json.dumps(ret_card))
-            self.send_bot_message(token, obj.get("open_id"), "action")
+            self.send_bot_message(token, obj.get("open_id"), "good done")
             print("refresh new card")
             return
 
