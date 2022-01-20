@@ -279,21 +279,6 @@ class RequestHandler(BaseHTTPRequestHandler):
                 },
                 "elements":[
                   {
-                    "tag":"img",
-                    "img_key":"img_2098a60d-8267-4d4c-91a8-d94b2baf90dg",
-                    "alt":{
-                      "tag":"plain_text",
-                      "content":"iPad Air 3"
-                    }
-                  },
-                  {
-                    "tag":"div",
-                    "text":{
-                      "tag":"lark_md",
-                      "content":"活动描述：**Apple 出品**\n开奖时间：**2022-01-03 18:00**"
-                    }
-                  },
-                  {
                     "tag":"action",
                     "actions":[
                       {
