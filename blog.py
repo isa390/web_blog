@@ -30,7 +30,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             return
 
         # 机器人 echo 收到的消息
-        self.send_bot_message(access_token, global_id, "action")
+        self.send_bot_message(access_token, global_id, "good")
         #self.response("")
         
         #self.response(json.dumps(ret_card))
