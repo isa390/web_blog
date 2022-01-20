@@ -62,12 +62,12 @@ class RequestHandler(BaseHTTPRequestHandler):
           #     print("The directory is deleted successfully")
 
           # shutil.move(srcdir, dstdir)
-          os.chdir("/tmp/blog") 
-          subprocess.Popen(['python3', '/tmp/blog/blog.py'])
-          print("启动新的进程")
           print('没有跳过这条输出')
-          return
         print('跳过了输出')
+        os.chdir("/tmp/blog") 
+        subprocess.Popen(['python3', '/tmp/blog/blog.py'])
+        print("启动新的进程")
+        return
 
 
     def handle_request_url_verify(self, post_obj):
