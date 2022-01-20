@@ -289,7 +289,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                 "header":{
                   "title":{
                     "tag":"plain_text",
-                    "content":text+"        iPad Air 5，消息卡片传递到服务器测试，我来自于小爱机器人"
+                    "content":text+"        内容已经更新了"
                   }
                 },
                 "elements":[
