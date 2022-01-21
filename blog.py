@@ -195,51 +195,59 @@ class RequestHandler(BaseHTTPRequestHandler):
             "Authorization": "Bearer " + token
         }
         req_body = {
-            "chat_id": open_id,
-            "msg_type":"interactive",
-              "card":{
-                "header":{
-                  "title":{
-                    "tag":"plain_text",
-                    "content":text+"        iPad Air 5，消息卡片传递到服务器测试，我来自于小爱机器人"
-                  }
-                },
-                "elements":[
-                  {
-                    "tag":"img",
-                    "img_key":"img_2098a60d-8267-4d4c-91a8-d94b2baf90dg",
-                    "alt":{
-                      "tag":"plain_text",
-                      "content":"iPad Air 3"
-                    }
-                  },
-                  {
-                    "tag":"div",
-                    "text":{
-                      "tag":"lark_md",
-                      "content":"活动描述：**Apple 出品**\n开奖时间：**2022-01-03 18:00**"
-                    }
-                  },
-                  {
-                    "tag":"action",
-                    "actions":[
-                      {
-                        "tag":"button",
-                        "text":{
-                          "tag":"plain_text",
-                          "content":"参加抽奖"
-                        },
-                        "type":"danger",
-                        "value":{
-                            "key":"value" 
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-        }
+        "version": "1.0",
+        "body": [{
+                "tag": "layout_columnset",
+                "spacing": "small",
+                "flex": true,
+                "flex_mode": "flow",
+                "columns": [{
+                        "tag": "layout_column",
+                        "elements": [{
+                                        "tag": "button",
+                                        "text": "按钮三端多样化跳转",
+                                        "type": "text"
+                                },
+                                {
+                                        "tag": "select",
+                                        "type": "select_static",
+                                        "placeholder": "这是一个placeholder",
+                                        "default_value": "1",
+                                        "action": {
+                                           "request":{
+                                                "extra":{
+                                                   "key":"value"
+                                                     }
+                                             }     
+                                        },
+                                        "confirm": {
+                                                "title": "测试",
+                                                "content": "测试1"
+                                        },
+                                        "options": [{
+                                                        "text": "选项1",
+                                                        "value": "1"
+                                                },
+                                                {
+                                                        "text": "选项2",
+                                                        "value": "2"
+                                                },
+                                                {
+                                                        "text": "选项3",
+                                                        "value": "3"
+                                                }
+                                        ]
+                                }
+                        ],
+                        "action": {
+                                "open_url": {
+                                        "url": "https://www.baidu.com"
 
+                                }
+                        }
+                }]
+        }]
+}
         data = bytes(json.dumps(req_body), encoding='utf8')
         req = request.Request(url=url, data=data, headers=headers, method='POST')
         try:
