@@ -188,7 +188,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         return rsp_dict.get("tenant_access_token", "")
 
     def send_message(self, token, open_id, text):
-        url = "https://open.feishu-boe.cn/open-apis/message/v4/send/"
+        url = "https://open.feishu-boe.cn/open-apis/message/v4/send/" 
 
         headers = {
             "Content-Type": "application/json",
