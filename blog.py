@@ -188,6 +188,72 @@ class RequestHandler(BaseHTTPRequestHandler):
         return rsp_dict.get("tenant_access_token", "")
 
     def send_message(self, token, open_id, text):
+        url = "https://open.feishu-boe.cn/open-apis/message/v4/send/"
+
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+        req_body = {
+            "chat_id": open_id,
+            "msg_type":"interactive",
+              "card":{
+                "header":{
+                  "title":{
+                    "tag":"plain_text",
+                    "content":text+"        iPad Air 5，消息卡片传递到服务器测试，我来自于小爱机器人"
+                  }
+                },
+                "elements":[
+                  {
+                    "tag":"img",
+                    "img_key":"img_2098a60d-8267-4d4c-91a8-d94b2baf90dg",
+                    "alt":{
+                      "tag":"plain_text",
+                      "content":"iPad Air 3"
+                    }
+                  },
+                  {
+                    "tag":"div",
+                    "text":{
+                      "tag":"lark_md",
+                      "content":"活动描述：**Apple 出品**\n开奖时间：**2022-01-03 18:00**"
+                    }
+                  },
+                  {
+                    "tag":"action",
+                    "actions":[
+                      {
+                        "tag":"button",
+                        "text":{
+                          "tag":"plain_text",
+                          "content":"参加抽奖"
+                        },
+                        "type":"danger",
+                        "value":{
+                            "key":"value" 
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+        }
+        data = bytes(json.dumps(req_body), encoding='utf8')
+        req = request.Request(url=url, data=data, headers=headers, method='POST')
+        try:
+            response = request.urlopen(req)
+        except Exception as e:
+            print(e.read().decode())
+            return
+
+        rsp_body = response.read().decode('utf-8')
+        rsp_dict = json.loads(rsp_body)
+        code = rsp_dict.get("code", -1)
+        if code != 0:
+            print("send message error, code = ", code, ", msg =", rsp_dict.get("msg", ""))
+
+    def send_old_message(self, token, open_id, text):
         url = "https://open.feishu.cn/open-apis/message/v4/send/"
 
         headers = {
