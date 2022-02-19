@@ -119,7 +119,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(f.read())
             print("javascript")
-            f.close()
+            f.close() 
         else:
             print(3)
             f = open(filepath[1:],"rb")
