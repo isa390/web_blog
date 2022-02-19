@@ -111,6 +111,15 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(html.encode())
             f.close()
+        elif self.path.endswith(".js"):
+            print("enter css")
+            f = open(filepath[1:],"rb")
+            self.send_response(200)
+            self.send_header('Content-type', 'text/javascript')
+            self.end_headers()
+            self.wfile.write(f.read())
+            print("javascript")
+            f.close()
         else:
             print(3)
             f = open(filepath[1:],"rb")
@@ -123,6 +132,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             f.close()
         #self.wfile.write(html.encode())
         return
+        
     def handle_request_url_verify(self, post_obj):
         # 原样返回 challenge 字段内容
         challenge = post_obj.get("challenge", "")
