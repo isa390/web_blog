@@ -120,6 +120,15 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(f.read())
             print("javascript")
             f.close()  
+        elif self.path.endswith(".md"):
+            print("enter md")
+            f = open(filepath[1:],"rb")
+            self.send_response(200)
+            self.send_header('Content-type', 'text/markdown')
+            self.end_headers()
+            self.wfile.write(f.read())
+            print("javascript")
+            f.close()  
         else:
             print(3)
             f = open(filepath[1:],"rb")
