@@ -137,6 +137,9 @@ function showResult(){
 window.onload = function () {
 }
 
+function imgReload(){
+  location.reload();
+}
 function descartes(list) {
     //parent上一级索引;count指针计数
     var point = {};
