@@ -15,10 +15,11 @@
 		<div class="wrapper">
 			<div class="heading-wrspper">
 				<div class="sub-heading">
-					<label>选择用例生成算法(此处的算法原则上应该只处理正常的组合，异常情况推荐手写)</label>
-					<select>
+					<label  style="color: red;font-size:30px;">选择用例生成算法(此处的算法原则上应该只处理正常的组合，异常情况推荐手写)</label>
+					<br>
+					<select style="font-size:25px;color: rgb(14, 12, 12);background-color: rgb(37, 209, 114);" >
 						<!-- <option value="正交法">正交用例生成</option> -->
-						<option value="对偶法">Pairiwise对偶用例生成</option>
+						<option value="对偶法">Pairiwise对偶算法</option>
 					</select>
 				</div>
 				<h2>参数化用例生成</h2>
@@ -130,7 +131,10 @@
 				<div class="sub-heading">
 					<p>业务场景一，是否需要多次调用</p>
 					<p>业务场景二，默认情况是否正常</p>
-					<p>正常业务场景有哪些，是否都覆盖了</p>
+					<p>业务场景三，使用者会有什么奇怪动作</p>
+					<p>业务场景四，业务流程是否整合完毕</p>
+					<p>业务场景五，元素逻辑冲突是否覆盖到位</p>
+					<p>业务场景六，5W2H是否覆盖</p>
 				</div>
 				<button>用例生成</button>
 			</div>
