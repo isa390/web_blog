@@ -19,8 +19,8 @@ function GenerateCase() {
         dealInput();
         console.log(arrContainer);
         var result = descartes(arrContainer);
-        pairwise(result);
-        // console.log(result[0][0]);//result就是笛卡尔积
+        makeDataSimple(result);
+        console.log(saveResultList);//result就是笛卡尔积
         // console.log(result[0][1]);//result就是笛卡尔积
         // console.log(result[0][2]);//result就是笛卡尔积
         showResult();
@@ -28,66 +28,61 @@ function GenerateCase() {
     }
   })
 }
-
-function pairwise(inputdata){
-    var flag = 0;
-    var listdata = inputdata;
-    var flagCnt = listdata.length;
-    var zero = listdata[0];
-    console.log(inputdata[flagCnt-1])
-    inputdata.pop()
-    console.log(inputdata[flagCnt-2])
-    return;
-    if(flagCnt < 2){
-        return;
+function makeDataSimple(inputdata){
+  var dataHeightCnt = inputdata.length;
+  var tempData = inputdata;
+  
+  while(dataHeightCnt > 0){
+    dataHeightCnt--;
+    var targetSrc = tempData[tempData.length-1];
+    tempData.pop();
+    if(saveData(targetSrc,tempData)){
+      var zhongzhuan = [];
+      zhongzhuan.push(targetSrc);
+      for(var i=0;i < tempData.length; i++){
+        zhongzhuan.push(tempData[i]);
+      }
+      tempData = zhongzhuan;
     }
-    while(flagCnt > 0){
-        flagCnt--;
-        console.log(listdata[flagCnt-1]);listdata.pop();
-        for(var col = 1; col < listdata.length; col ++){
-           // for(var nul = )
-        }
+    else
+    {
     }
-    return;
-    saveResultList.push(listdata[0]);
-    var lie = Object.keys(listdata[0]).length;
-    for(var i=0; i < listdata.length;i++){
-        for(var k=0;k < lie-1;k++){
-            for(var j = i+1;j < listdata.length;j++){
-                if((listdata[i][k] == listdata[j][k])&&(listdata[i][k+1] == listdata[j][k+1]))
-                {
-                    if(k==(lie-2)){
-                        flag = 1;
-                        console.log(flag)
-                    }
-                    break;
-                }
-            }
-            if(j == listdata.length){
-                break;
-            }
-            if(flag == 1){
-                break;
-            }
-        }
-        if(flag == 1){
-            flag = 0;
-        }else{
-            saveResultList.push(listdata[i]);
-            console.log("i="+i)
-        }
-    }
-    console.log(listdata.length)
-    //resultList.push()
+  }
+  saveResultList=tempData;
 }
 
+function saveData(targetSouce,listSources){
+  var width = Object.keys(listSources[0]).length;
+  for(var startIndex = 0;startIndex < width - 1;startIndex++){
+    for(var endIndex = startIndex+1;endIndex < width;endIndex++){
+      if(hasData(startIndex,endIndex,targetSouce,listSources)){
+      }
+      else{
+        return true;
+      }
+    }
+  }
+  return false;
+}
+function hasData(beginIndex,endIndex,targetSouce,listSources){
+  if(beginIndex >= 0){}
+  else{return;}
+  if(beginIndex >= endIndex){return;}
+  if(endIndex >= targetSouce.length){return;}
+  for(var i=0;i < listSources.length;i++){
+    if((targetSouce[beginIndex] == listSources[i][beginIndex])&&(targetSouce[endIndex]  == listSources[i][endIndex]))
+    {
+      return true;
+    }
+  }
+  return false;
+}
 function dealInput(){
     var generateIDS = document.getElementById("generateId");
     for (var i = 1;i < generateIDS.childNodes.length;i++){
         simpleCaseDeal(generateIDS.childNodes[i].getElementsByTagName('input'));
         i++;
     }
-    //console.log(generateIDS.childNodes[1].getElementsByTagName('input')[0].checked)
 }
 function simpleCaseDeal(obj){
     var arr = new Array();　//创建一个数组
@@ -102,26 +97,38 @@ function simpleCaseDeal(obj){
     }
     arrContainer.push(arr);
 }
+function getReport(caseNumber,elementSrc){
+  var report = "case"+caseNumber+":入参：";
+  for(var i=0;i < Object.keys(elementSrc).length;i++){
+    report += elementSrc[i]+",";
+  }
+  report+="期望结果：";
+  for(var i=0;i < Object.keys(elementSrc).length;i++){
+    report += myMap.get(elementSrc[i])+",";
+  }
+  return report;
+}
 function showResult(){
-    
-    var f = document.getElementById("container"); 
-    var childs = f.childNodes; 
-    for(var i = 0; i < childs.length; i++) { 
-        f.removeChild(childs[i]); 
-    }
+  var f = document.getElementById("container"); 
+  var childs = f.childNodes; 
+  for(var i = 0; i < childs.length; i++) { 
+      f.removeChild(childs[i]); 
+  }
 	table = document.createElement("table");
-    table.border = 1;
-    table.style = 'font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif';
+  table.border = 1;
+  table.style = 'font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif';
 	tBody = document.createElement("tBody");
-	for(var i=0;i<arrContainer.length;i++){
+	for(var i=0;i<saveResultList.length;i++){
 		tr = document.createElement("tr");
 		tBody.appendChild(tr);
-		for(var j=0;j<arrContainer[i].length;j++){
+		for(var j=0;j<Object.keys(saveResultList[0]).length;j++){
 			td = document.createElement("td");
 			tr.appendChild(td);
-			td.innerHTML="  "+arrContainer[i][j];
-            j++;
+			td.innerHTML="  "+saveResultList[i][j];
 		}
+    td = document.createElement("td");
+    tr.appendChild(td);
+    td.innerHTML=""+getReport(i+1,saveResultList[i]);
 	}
 	table.appendChild(tBody);
 	container.appendChild(table);

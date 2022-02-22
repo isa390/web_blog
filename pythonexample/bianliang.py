@@ -62,7 +62,7 @@ def parewise(option):
 
 
 if __name__ == '__main__':
-    pl = [['M', 'O', 'P'], ['W', 'L', 'I'], ['C', 'E']]
+    pl = [['张三', '历史', '王二'], ['足球', '篮球', '乒乓球'], ['中国', '美国','德国']]
     a = parewise(pl)
     print()
     for i in a:
