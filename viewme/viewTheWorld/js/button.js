@@ -6,7 +6,7 @@ var myMap = new Map();
 function GenerateCase() {
     Swal.fire({
     title: '温馨提醒',
-    text: "请检查参数之间的耦合关系是否适配该算法!",
+    text: "请检查参数之间的耦合关系是否适配该算法所依据的理论!",
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
     confirmButtonText: '已经确认了!'
@@ -108,6 +108,14 @@ function getReport(caseNumber,elementSrc){
   }
   return report;
 }
+function getResult(elementSrc){
+  var report = "";
+  report+="期望结果：";
+  for(var i=0;i < Object.keys(elementSrc).length;i++){
+    report += myMap.get(elementSrc[i])+",";
+  }
+  return report;
+}
 function showResult(){
   var f = document.getElementById("container"); 
   var childs = f.childNodes; 
@@ -126,6 +134,21 @@ function showResult(){
 			tr.appendChild(td);
 			td.innerHTML="  "+saveResultList[i][j];
 		}
+    td = document.createElement("td");
+    tr.appendChild(td);
+    td.innerHTML=""+getResult(saveResultList[i]);
+	}
+	table.appendChild(tBody);
+	container.appendChild(table);
+
+  
+	table = document.createElement("table");
+  table.border = 1;
+  table.style = 'font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif';
+	tBody = document.createElement("tBody");
+	for(var i=0;i<saveResultList.length;i++){
+		tr = document.createElement("tr");
+		tBody.appendChild(tr);
     td = document.createElement("td");
     tr.appendChild(td);
     td.innerHTML=""+getReport(i+1,saveResultList[i]);
@@ -186,4 +209,11 @@ function descartes(list) {
         }
       }
     }
+}
+
+
+function yewucase(){
+  Swal.fire({
+    title: '业务场景复盘完毕',
+  })
 }
