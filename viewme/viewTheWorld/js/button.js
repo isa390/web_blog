@@ -92,8 +92,8 @@ function simpleCaseDeal(obj){
     var obj3 = obj[3].value.split('/');
     var obj4 = obj[4].value.split('/');
     for(var i=0;i<obj3.length;i++){
-        arr.push(obj[2].value+"为"+obj3[i]);
-        myMap.set(obj[2].value+"为"+obj3[i],obj4[i])
+        arr.push(obj[2].value+"设置为"+obj3[i]);
+        myMap.set(obj[2].value+"设置为"+obj3[i],obj4[i])
     }
     arrContainer.push(arr);
 }
