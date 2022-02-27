@@ -2,7 +2,7 @@ var slideIndex = 0;
 var arrContainer = [];
 var saveResultList = [];
 var myMap = new Map();
-
+var caseinput ="";
 function GenerateCase() {
     Swal.fire({
     title: '温馨提醒',
@@ -25,8 +25,28 @@ function GenerateCase() {
         // console.log(result[0][2]);//result就是笛卡尔积
         showResult();
         console.log(myMap)
+        document.getElementById("geinput").innerHTML=caseinput;
+
     }
   })
+}
+
+function loadInput(){
+  console.log("load");
+  var loadputs = document.getElementById("loadinput").value.split(";");
+  var generateIDS = document.getElementById("generateId");
+  var j = 0;
+  for (var i = 1;i < generateIDS.childNodes.length;i++){
+      if(j < loadputs.length-1){
+        var temp = loadputs[j].split(",");
+        j++;
+      }
+      else{
+        break;
+      }
+      simpleLoadCaseDeal(generateIDS.childNodes[i].getElementsByTagName('input'),temp);
+      i++;
+  }
 }
 function makeDataSimple(inputdata){
   var dataHeightCnt = inputdata.length;
@@ -84,6 +104,11 @@ function dealInput(){
         i++;
     }
 }
+function simpleLoadCaseDeal(obj,inputva){
+  obj[2].value = inputva[0];
+  obj[3].value = inputva[1];
+  obj[4].value = inputva[2];
+}
 function simpleCaseDeal(obj){
     var arr = new Array();　//创建一个数组
     if(obj[0].checked == false){
@@ -95,6 +120,9 @@ function simpleCaseDeal(obj){
         arr.push(obj[2].value+"设置为"+obj3[i]);
         myMap.set(obj[2].value+"设置为"+obj3[i],obj4[i])
     }
+    caseinput+=obj[2].value+",";
+    caseinput+=obj[3].value+",";
+    caseinput+=obj[4].value+";";
     arrContainer.push(arr);
 }
 function getReport(caseNumber,elementSrc){
