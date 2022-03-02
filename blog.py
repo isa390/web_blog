@@ -18,6 +18,9 @@ ret_card = {
         "text": "Select"
     }]
 }
+paths = [
+"onehour",
+]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -38,7 +41,8 @@ class RequestHandler(BaseHTTPRequestHandler):
             myobj = {'somekey': 'somevalue'}
             x = requests.post(url, data = myobj)
             return
-        
+        if (dealPost(self)):
+          return
         # 解析请求 body
         req_body = self.rfile.read(int(self.headers['content-length']))
         obj = json.loads(req_body.decode("utf-8"))
@@ -392,6 +396,35 @@ class RequestHandler(BaseHTTPRequestHandler):
         code = rsp_dict.get("code", -1)
         if code != 0:
             print("send message error, code = ", code, ", msg =", rsp_dict.get("msg", ""))
+
+
+def dealPost(self):
+  try:
+    ctype, pdict = cgi.parse_header(self.headers['update'])
+    for path in paths:
+        if(ctype == path):
+            self.wfile.write(path.encode())
+            print(path)
+            req_body = self.rfile.read(int(self.headers['content-length']))
+            obj = req_body.decode("utf-8")
+            print(obj)
+            try:
+                #create__filea("E:\AmesomeCloud\Blog2Me"+"\\blog\\buildme.txt",obj)
+                create__filea("/tmp/blog/blog/"+path+".txt",obj)
+            except Exception as e:
+                print(str(e))
+            return True
+        elif(ctype == 'get'+path):
+            print(ctype)
+            #f = open("E:\AmesomeCloud\Blog2Me"+"\\blog\\buildme.txt","rb")
+            f = open("/tmp/blog/blog/"+path+".txt","rb")
+            self.wfile.write(f.read())
+            #self.wfile.write(getNumStr(bytes2str(f),"<br>",40).encode())
+            f.close()
+            return True
+    return False
+  except :
+    return False
 
 def run():
     port = 5000
