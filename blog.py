@@ -426,6 +426,19 @@ def dealPost(self):
   except :
     return False
 
+def create__filea(file_path,msg):
+    try:
+        f=open(file_path,"r+",encoding='utf-8')
+    except  Exception as e:
+        print(str(e))
+        f=open(file_path,"a+",encoding='utf-8')
+    content = f.read()
+    f.seek(0,0)
+    f.write('<br>')
+    f.write(msg)
+    f.write(content)
+    f.close()
+    print("save ok")
 def run():
     port = 5000
     server_address = ('', port)
