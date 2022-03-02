@@ -16,7 +16,7 @@ function uploaddata(id,topicname){
        }};
     var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");  
     console.log(time2)
-    console.log(document.getElementById(id).value)
+    console.log(data)
     var data = time2+":"+data;
     xhr.send(data);    
 }
