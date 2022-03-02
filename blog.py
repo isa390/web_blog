@@ -399,6 +399,9 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 def dealPost(self):
+  self.send_response(200)
+  self.send_header('Content-type', 'text/plain')
+  self.end_headers()
   try:
     ctype, pdict = cgi.parse_header(self.headers['update'])
     for path in paths:
