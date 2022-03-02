@@ -410,14 +410,14 @@ def dealPost(self):
             print(obj)
             try:
                 #create__filea("E:\AmesomeCloud\Blog2Me"+"\\blog\\buildme.txt",obj)
-                create__filea("/tmp/blog/blog/"+path+".txt",obj)
+                create__filea("/tmp/blog/"+path+".txt",obj)
             except Exception as e:
                 print(str(e))
             return True
         elif(ctype == 'get'+path):
             print(ctype)
             #f = open("E:\AmesomeCloud\Blog2Me"+"\\blog\\buildme.txt","rb")
-            f = open("/tmp/blog/blog/"+path+".txt","rb")
+            f = open("/tmp/blog/"+path+".txt","rb")
             self.wfile.write(f.read())
             #self.wfile.write(getNumStr(bytes2str(f),"<br>",40).encode())
             f.close()
