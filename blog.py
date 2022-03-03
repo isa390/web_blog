@@ -20,6 +20,7 @@ ret_card = {
 }
 paths = [
 "onehour",
+"spltalk",
 ]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
