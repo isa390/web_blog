@@ -33,7 +33,7 @@ function uploaddata(id,topicname){
     xhr.send(data);    
     setTimeout(function() { downloaddata("spltalk"); }, 500);
     console.log("myVar");
-    console.log(myVar);
+    console.log(myVar); 
     if(myVar == "001"){
         myVar ="002";
         console.log(myVar);
