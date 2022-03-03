@@ -82,3 +82,9 @@ function setPosition(id) {
           range.select(); // 选定当前区域
     }
 }
+
+function copycontent(id){
+    let copyelement = document.getElementById(id);
+    copyelement.select();
+    document.execCommand("Copy");
+}
