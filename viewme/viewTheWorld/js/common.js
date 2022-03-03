@@ -8,6 +8,10 @@ function keydown(){
 }
 var myVar = "001";
 function uploaddata(id,topicname){
+    
+    var obj = document.getElementById("name"); //定位id
+    var index = obj.selectedIndex; // 选中索引
+    var text = obj.options[index].text; // 选中文本
     console.log("ok")
     var data = document.getElementById(id).value;
     document.getElementById(id).value= '';
@@ -25,7 +29,7 @@ function uploaddata(id,topicname){
     var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");  
     console.log(time2)
     console.log(data)
-    var data = time2+":"+data;
+    var data = time2+"  "+text+":"+data;
     xhr.send(data);    
     setTimeout(function() { downloaddata("spltalk"); }, 500);
     console.log("myVar");
