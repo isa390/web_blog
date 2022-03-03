@@ -58,3 +58,27 @@ function downloaddata(topicname){
     };
     xhr.send(null);  
 }
+
+
+function nextpage(id){
+    var data = document.getElementById(id).value;
+    data += "<br>";
+    document.getElementById(id).value = data;
+    setPosition(id);
+}
+
+
+function setPosition(id) {
+    let ctrl = document.getElementById(id);
+    if (ctrl.setSelectionRange) {
+          //非ie
+          ctrl.focus(); // 获取焦点
+          ctrl.setSelectionRange(-1,-1); // 设置选定区的开始和结束点
+    } else if (ctrl.createTextRange) {
+          var range = ctrl.createTextRange(); // 创建选定区
+          range.collapse(true); // 设置为折叠,即光标起点和结束点重叠在一起
+          range.moveEnd("character", pos); // 移动结束点
+          range.moveStart("character", pos); // 移动开始点
+          range.select(); // 选定当前区域
+    }
+}
