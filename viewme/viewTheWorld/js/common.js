@@ -34,7 +34,7 @@ function uploaddata(id,topicname){
     setTimeout(function() { downloaddata("spltalk"); }, 500);
     console.log("myVar");
     console.log(myVar); 
-    if(myVar == "001"){
+    if(myVar == "001"){ 
         myVar ="002";
         console.log(myVar);
         setInterval("downloaddata('spltalk')","2000"); 
