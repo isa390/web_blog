@@ -1,4 +1,4 @@
-var url = "https://3fe5-115-192-20-43.ngrok.io";
+var url = getURL();
 
 function keydown(){
     if(event.keyCode == 13){ //按下回车键
