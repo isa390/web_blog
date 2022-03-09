@@ -8,9 +8,12 @@ from urllib import request, parse
 import cgi
 import requests
 import os
-APP_ID = "cli_a163caabc278d01b"
-APP_SECRET = "VFmozphTstd9gO9A6uHqJiGDAhJ34eIR"
-APP_VERIFICATION_TOKEN = "sHxDsDj8lUft8RvtJynA1ZuTQZEWUU2N"
+# APP_ID = "cli_a163caabc278d01b"
+# APP_SECRET = "VFmozphTstd9gO9A6uHqJiGDAhJ34eIR"
+# APP_VERIFICATION_TOKEN = "sHxDsDj8lUft8RvtJynA1ZuTQZEWUU2N"
+APP_ID = "cli_a15bebebc5b8d00b"
+APP_SECRET = "pMJXu20Pn2L2fmFIvwSrZcPmZbRnmotd"
+APP_VERIFICATION_TOKEN = "hxaTTQZc9re73RE4bsKaEcCvLxLr1NIY"
 ret_card = {
     "version": "1.0",
     "body": [{
