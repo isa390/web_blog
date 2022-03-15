@@ -45,7 +45,7 @@ function getNextLine(blankn){
    }
    return output;
 }
-
+  
 function getProperties(){
     var code = 'application.properties指向自己的配置xx_base,注意这里的base不用指向application.properties：device.properties中也要加入自己的设备号<br>'+
     'preMark=此处是自己的配置文件的名字<br>'+
