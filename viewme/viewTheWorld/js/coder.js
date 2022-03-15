@@ -3,7 +3,10 @@ function keydown(topic){
         uploaddata(topic);
      }
 }
-
+var blank1 = 4;
+var blank2 = 8;
+var blank3 = 12;
+var blank4 = 16;
 function uploaddata(topic){
     console.log("ok")
     var data = document.getElementById(topic).value;
@@ -17,7 +20,7 @@ function uploaddata(topic){
 
     var OUTPUT = steps+DM+CM+SM+CASE+PAGE;
     firstLetterToUpcase(data);
-    document.querySelector('.info').innerHTML = OUTPUT; //显示
+    document.querySelector('.info').innerHTML = getAsyncStep(data); //显示
 }
 
 function firstLetterToUpcase(input){
@@ -26,46 +29,18 @@ function firstLetterToUpcase(input){
       var last = input.substring(1);
       var output = fisrt+last;
       console.log(output);
+      return output;
    }
 }
 
+function getNextLine(length){
+   var output = '<br>';
+   for(i = 0;i< length;i++){
+      output+= '&nbsp;';
+   }
+   return output;
+}
+
 function getAsyncStep(input){
-    var code = 
-    "
-    public class OpenDocument extends AsyncStep {
-    
-        @Override
-        public String apiName() {
-            return "openDocument";
-        }
-    
-        @Override
-        public String scope() {
-            return "";
-        }
-    
-        @Step
-        public void openDocument(Map<String, Object> params,NetCallback netCallback) {
-            asyncStep(params, new NetCallback() {
-                @Override
-                public void onSuccess(String result) {
-                    if (netCallback!=null){
-                        netCallback.onSuccess(result);
-                    }
-                    // 将结果赋值给Context
-                    OpenDocumentContext openDocumentContext = setData2Context(result, OpenDocumentContext.class);
-                    if (openDocumentContext != null) {
-                        CM.openDocumentContext = openDocumentContext;
-                    }
-                } 
-    
-                @Override
-                public void onFail(String msg) {
-                    if (netCallback!=null){
-                        netCallback.onFail(msg);
-                    }
-                }
-            });
-        }
-    }"
+    var code = ""
 }
