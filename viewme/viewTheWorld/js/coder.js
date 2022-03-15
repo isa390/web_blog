@@ -43,4 +43,40 @@ function getNextLine(length){
 
 function getAsyncStep(input){
     var code = ""
+    public class OpenDocument extends AsyncStep {
+    
+        @Override
+        public String apiName() {
+            return "openDocument";
+        }
+    
+        @Override
+        public String scope() {
+            return "";
+        }
+    
+        @Step
+        public void openDocument(Map<String, Object> params,NetCallback netCallback) {
+            asyncStep(params, new NetCallback() {
+                @Override
+                public void onSuccess(String result) {
+                    if (netCallback!=null){
+                        netCallback.onSuccess(result);
+                    }
+                    // 将结果赋值给Context
+                    OpenDocumentContext openDocumentContext = setData2Context(result, OpenDocumentContext.class);
+                    if (openDocumentContext != null) {
+                        CM.openDocumentContext = openDocumentContext;
+                    }
+                } 
+    
+                @Override
+                public void onFail(String msg) {
+                    if (netCallback!=null){
+                        netCallback.onFail(msg);
+                    }
+                }
+            });
+        }
+    }
 }
