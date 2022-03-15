@@ -68,41 +68,41 @@ function getPM(input){
 function getPage(input){
     var code = '创建Page文件： '+firstLetterToUpcase(input)+'Page.java<br>'+
     getNextLine('blank00')+'public class ' + firstLetterToUpcase(input)+'Page extends BasePage {'+
-getNextLine('blank04')+'    public ' + firstLetterToUpcase(input)+'Page(DriverAdapter driver) {'+
-getNextLine('blank08')+'        super(driver);'+
-getNextLine('blank04')+'    }'+
-getNextLine('blank04')+'    public void xxxxxxxxxx() {'+
-getNextLine('blank08')+'        Element element = new Element(driver, new PlatformElementCallback() {'+
-getNextLine('blank12')+'            @Override'+
-getNextLine('blank12')+'            public BaseAction ios() {'+
-getNextLine('blank16')+'                Action action = new Action.Builder().setUPath("UPath(type_ == \'XCUIElementTypeApplication\')/0/0/0/0/0/0/0/0/0/0/0/2/0")'+
-getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
-getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
-getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
-getNextLine('blank16')+'                return action;'+
-getNextLine('blank12')+'            }'+
-getNextLine('blank01')+''+
-getNextLine('blank12')+'            @Override'+
-getNextLine('blank12')+'            public BaseAction android() {'+
-getNextLine('blank16')+'                Action action = new Action.Builder().setUPath("UPath(id_ == \'title_bar_back\')")'+
-getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
-getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
-getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
-getNextLine('blank16')+'                return action;'+
-getNextLine('blank01')+''+
-getNextLine('blank12')+'            }'+
-getNextLine('blank00')+'//            @Override'+
-getNextLine('blank00')+'//            public BaseAction mac(){'+
-getNextLine('blank00')+'//                PCAction action = new PCAction.Builder().setActionMode(ActionMode.Native).mac_bundle_id("");'+
-getNextLine('blank00')+'//                return action;'+
-getNextLine('blank00')+'//            }'+
-getNextLine('blank08')+'        });'+
-getNextLine('blank08')+'        element.click();//element的方法都是封装好了的，可以看到点击啊，发送这类的'+
-getNextLine('blank04')+'    }'+
-getNextLine('blank01')+''+
-getNextLine('blank00')+'}'
+    getNextLine('blank04')+'    public ' + firstLetterToUpcase(input)+'Page(DriverAdapter driver) {'+
+    getNextLine('blank08')+'        super(driver);'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank04')+'    public void xxxxxxxxxx() {'+
+    getNextLine('blank08')+'        Element element = new Element(driver, new PlatformElementCallback() {'+
+    getNextLine('blank12')+'            @Override'+
+    getNextLine('blank12')+'            public BaseAction ios() {'+
+    getNextLine('blank16')+'                Action action = new Action.Builder().setUPath("UPath(type_ == \'XCUIElementTypeApplication\')/0/0/0/0/0/0/0/0/0/0/0/2/0")'+
+    getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
+    getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
+    getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
+    getNextLine('blank16')+'                return action;'+
+    getNextLine('blank12')+'            }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank12')+'            @Override'+
+    getNextLine('blank12')+'            public BaseAction android() {'+
+    getNextLine('blank16')+'                Action action = new Action.Builder().setUPath("UPath(id_ == \'title_bar_back\')")'+
+    getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
+    getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
+    getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
+    getNextLine('blank16')+'                return action;'+
+    getNextLine('blank01')+''+
+    getNextLine('blank12')+'            }'+
+    getNextLine('blank00')+'//            @Override'+
+    getNextLine('blank00')+'//            public BaseAction mac(){'+
+    getNextLine('blank00')+'//                PCAction action = new PCAction.Builder().setActionMode(ActionMode.Native).mac_bundle_id("");'+
+    getNextLine('blank00')+'//                return action;'+
+    getNextLine('blank00')+'//            }'+
+    getNextLine('blank08')+'        });'+
+    getNextLine('blank08')+'        element.click();//element的方法都是封装好了的，可以看到点击啊，发送这类的'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank00')+'}';
 
-return code;
+    return code;
 }
 function getSM(input){
     var code = '在SM.java中创建：<br>'+
