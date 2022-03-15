@@ -14,9 +14,12 @@ function uploaddata(topic){
     var CASE = 1;
     var PAGE = 1;
 
-    var OUTPUT = steps+DM+CM+SM+CASE+PAGE;
+    var OUTPUT = steps+DM+CM+SM+CASE+PAGE+
+    getAsyncStep(data)+'<br>'+
+    getContext(data)+'<br>'+
+    getSM(data);
     firstLetterToUpcase(data);
-    document.querySelector('.info').innerHTML = getAsyncStep(data); //显示
+    document.querySelector('.info').innerHTML = OUTPUT; //显示
 }
 
 function firstLetterToUpcase(input){
@@ -36,6 +39,24 @@ function getNextLine(blankn){
       output+= '&nbsp;';
    }
    return output;
+}
+function getSM(input){
+    var code = '在SM.java中创建：<br>'+
+    '    public static '+firstLetterToUpcase(input)+' ' +input+' = new ' + firstLetterToUpcase(input)+';'
+
+    return code
+}
+function getCase(input){
+    var code = '创建case文件： '+firstLetterToUpcase(input)+'Case.java<br>'+
+
+
+}
+function getContext(input){
+    var code = '在context文件夹下面新建一个上下文文件   '+firstLetterToUpcase(input)+'Context.java<br>'+
+    'public class '+firstLetterToUpcase(input)+'Context {}<br>'+
+    '然后在CM.java里面添加：<br>'+
+    'public static '+firstLetterToUpcase(input)+'Context '+input+'Context = new '+firstLetterToUpcase(input)+'Context();'
+    return code;
 }
 
 function getAsyncStep(input){
