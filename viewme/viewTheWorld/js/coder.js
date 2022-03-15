@@ -57,7 +57,7 @@ function getAsyncStep(input){
                     if (openDocumentContext != null) {
                         CM.openDocumentContext = openDocumentContext;
                     }
-                }
+                } 
     
                 @Override
                 public void onFail(String msg) {
