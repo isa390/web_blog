@@ -1,0 +1,8 @@
+function getNextLine(blankn){
+   var length = blankn.substring(blankn.length-1);
+   var output = '<br>';
+   for(i = 0;i< length;i++){
+      output+= '&nbsp;';
+   }
+   return output;
+}
