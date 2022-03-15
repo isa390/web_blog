@@ -3,7 +3,7 @@ function keydown(topic){
         uploaddata(topic);
      }
 }
-var url = getUrl();
+var url = getURL();
 function uploaddata(topic){
     console.log("ok")
     var data = document.getElementById(topic).value;
