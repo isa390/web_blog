@@ -17,7 +17,9 @@ function uploaddata(topic){
     var OUTPUT = steps+DM+CM+SM+CASE+PAGE+
     getAsyncStep(data)+'<br>'+
     getContext(data)+'<br>'+
-    getSM(data);
+    getSM(data)+'<br>'+
+    getCase(data)+'<br>'+
+    getPage(data);
     firstLetterToUpcase(data);
     document.querySelector('.info').innerHTML = OUTPUT; //显示
 }
@@ -40,6 +42,9 @@ function getNextLine(blankn){
    }
    return output;
 }
+function getPage(input){
+
+}
 function getSM(input){
     var code = '在SM.java中创建：<br>'+
     '    public static '+firstLetterToUpcase(input)+' ' +input+' = new ' + firstLetterToUpcase(input)+';'
@@ -48,7 +53,58 @@ function getSM(input){
 }
 function getCase(input){
     var code = '创建case文件： '+firstLetterToUpcase(input)+'Case.java<br>'+
-
+    getNextLine('blank00')+'@Slf4j'+
+    getNextLine('blank00')+'public class ' + firstLetterToUpcase(input)+'Case extends BaseOpenPlatformCase {'+
+    getNextLine('blank04')+'    @BeforeClass'+
+    getNextLine('blank04')+'    public void beforeClass(){'+
+    getNextLine('blank08')+'        /*这里是前置条件的编写的地方，比方说图片的预览，需要从网络上获取图片*/'+
+    getNextLine('blank08')+'        SM.downloadFile.downloadFile(new Params()'+
+    getNextLine('blank16')+'                .addParams("url", "http://tosv.boe.byted.org/obj/lark-qa-yinxiao/testFile/testDoc.doc").build());'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank04')+'    @Override'+
+    getNextLine('blank04')+'    public Object[][] params() {'+
+    getNextLine('blank08')+'        return new Object[][]{'+
+    getNextLine('blank16')+'                new BaseDataBean()'+
+    getNextLine('blank24')+'                        .setParam(new Params()'+
+    getNextLine('blank24')+'                        /*此处的作用在于根据API的入参进行参数的设置，更改参数就行了，其他可以不用动*/'+
+    getNextLine('blank32')+'                                .addParams("filePath", CM.downloadFileContext.tempFilePath)'+
+    getNextLine('blank32')+'                                .addParams("fileType", "doc")'+
+    getNextLine('blank32')+'                                .addParams("showMenu", true)'+
+    getNextLine('blank32')+'                                .build())'+
+    getNextLine('blank24')+'                        .setExpect(buildStatusExpect(SM.' +input+'.apiName(),"ok"))'+
+    getNextLine('blank24')+'                        .setAssertType(AssertType.STRING)'+
+    getNextLine('blank24')+'                        .setDescription("desc")'+
+    getNextLine('blank25')+'                         .build(),'+
+    getNextLine('blank08')+'        };'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank04')+'    @Override'+
+    getNextLine('blank04')+'    public boolean isAsync() {'+
+    getNextLine('blank08')+'        return true;'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank04')+'    @Override'+
+    getNextLine('blank04')+'    public OpenPlatformBaseStep currentStep() {'+
+    getNextLine('blank08')+'        return SM.' +input+';'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank04')+'    @Override'+
+    getNextLine('blank04')+'    public void doAsyncStep(Map<String, Object> params,NetCallback callback) {'+
+    getNextLine('blank08')+'        SM.' +input+'.' +input+'(params, callback);'+
+    getNextLine('blank01')+''+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank04')+'    @Override'+
+    getNextLine('blank04')+'    public void doAfterStepNow(Map<String, Object> otherParam, Map<String, Object> params) {'+
+    getNextLine('blank08')+'        DM.D1().' +input+'Page().clickBack();'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank01')+''+
+    getNextLine('blank04')+'    @Override'+
+    getNextLine('blank04')+'    public void doBeforeStep(Map<String, Object> otherParam, Map<String, Object> params) {'+
+    getNextLine('blank04')+'    }'+
+    getNextLine('blank00')+'}'
+    return code;
 
 }
 function getContext(input){
@@ -75,7 +131,7 @@ getNextLine('blank08')+'		return "";'+
 getNextLine('blank04')+'	}'+
 getNextLine('blank04')+''+
 getNextLine('blank04')+'	@Step'+
-getNextLine('blank04')+'	public void openDocument(Map<String, Object> params,NetCallback netCallback) {'+
+getNextLine('blank04')+'	public void '+input+'(Map<String, Object> params,NetCallback netCallback) {'+
 getNextLine('blank08')+'		asyncStep(params, new NetCallback() {'+
 getNextLine('blank012')+'			@Override'+
 getNextLine('blank012')+'			public void onSuccess(String result) {'+
