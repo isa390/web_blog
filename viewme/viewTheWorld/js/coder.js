@@ -30,7 +30,7 @@ function firstLetterToUpcase(input){
 }
 
 function getNextLine(blankn){
-   var length = blankn.substring(blankn.length-1);
+   var length = blankn.substring(blankn.length-2);
    var output = '<br>';
    for(i = 0;i< length;i++){
       output+= '&nbsp;';
@@ -39,7 +39,45 @@ function getNextLine(blankn){
 }
 
 function getAsyncStep(input){
-    var code = ''
-    console.log(code);
-   return code;
+   var upCase = firstLetterToUpcase(input);
+    var code = ''+
+    getNextLine('blank00')+'public class '+upCase+' extends AsyncStep {'+
+getNextLine('blank020')+'    '+
+getNextLine('blank04')+'	@Override'+
+getNextLine('blank04')+'	public String apiName() {'+
+getNextLine('blank08')+'		return "'+input+'";'+
+getNextLine('blank04')+'	}'+
+getNextLine('blank04')+''+
+getNextLine('blank04')+'	@Override'+
+getNextLine('blank04')+'	public String scope() {'+
+getNextLine('blank08')+'		return "";'+
+getNextLine('blank04')+'	}'+
+getNextLine('blank04')+''+
+getNextLine('blank04')+'	@Step'+
+getNextLine('blank04')+'	public void openDocument(Map<String, Object> params,NetCallback netCallback) {'+
+getNextLine('blank08')+'		asyncStep(params, new NetCallback() {'+
+getNextLine('blank012')+'			@Override'+
+getNextLine('blank012')+'			public void onSuccess(String result) {'+
+getNextLine('blank016')+'				if (netCallback!=null){'+
+getNextLine('blank020')+'					netCallback.onSuccess(result);'+
+getNextLine('blank016')+'				}'+
+getNextLine('blank016')+'				// 将结果赋值给Context'+
+getNextLine('blank016')+'				'+upCase+'Context '+input+'Context = setData2Context(result, '+upCase+'Context.class);'+
+getNextLine('blank016')+'				if ('+input+'Context != null) {'+
+getNextLine('blank020')+'					CM.'+input+'Context = '+input+'Context;'+
+getNextLine('blank016')+'				}'+
+getNextLine('blank012')+'			} '+
+getNextLine('blank04')+''+
+getNextLine('blank012')+'			@Override'+
+getNextLine('blank012')+'			public void onFail(String msg) {'+
+getNextLine('blank016')+'				if (netCallback!=null){'+
+getNextLine('blank020')+'					netCallback.onFail(msg);'+
+getNextLine('blank016')+'				}'+
+getNextLine('blank012')+'			}'+
+getNextLine('blank08')+'		});'+
+getNextLine('blank04')+'	}'+
+getNextLine('blank00')+'}'
+
+
+   return code
 }

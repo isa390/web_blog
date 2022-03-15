@@ -23,9 +23,9 @@ def run():
 def getFormatOutput(strContent,n):
     out = ''
     if(n > 9):
-        out += 'getNextLine(\'blank'+str(n)+'\')+\''+strContent.replace('\n', '')+'\'+'
+        out += 'getNextLine(\'blank'+str(n * 4)+'\')+\''+strContent.replace('\n', '')+'\'+'
     else:
-        out += 'getNextLine(\'blank0'+str(n)+'\')+\''+strContent.replace('\n', '')+'\'+'
+        out += 'getNextLine(\'blank0'+str(n * 4)+'\')+\''+strContent.replace('\n', '')+'\'+'
     return out
 def getHeadBlank(strContent):
     blanknumber = 0
