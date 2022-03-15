@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../../main.css">
   <link rel="stylesheet" href="movie.css">
   <script src="./js/openweb.js"></script>
+  <script src="./js/ModelJs.js"></script>
  </head>
  <body>
  	<div class="main-wrapper">
@@ -81,6 +82,7 @@
 				<div class="card">
 					<h3>自动化课程学习笔记</h3>
 					<p>笔记记录.</p>
+					<p></p>
 					<details>
 						<summary>python</summary>
 						<p>列表、数组、字典、json.python中写文件和读文件是一样的</p>
@@ -88,10 +90,14 @@
 						<p>类、实例，界门纲目科属种</p>
 						<p>反射与单例模式.反射hasattr,getattr,setattr</p>
 					</details>
+					<input type="text" height="300px" id="autotestpanel_01" onkeydown="keydown('autotestpanel_01')">
+					<button onclick="downloaddata('autotestpanel_01')">python</button>
 					<details>
 						<summary>appium</summary>
 						<p>细节</p>
 					</details>
+					<input type="text" height="300px" id="autotestpanel_03" onkeydown="keydown('autotestpanel_03')">
+					<button onclick="downloaddata('autotestpanel_03')">appium</button>
 					<details>
 						<summary>自动化框架学习</summary>
 						<p>在case末尾doAfterStep后面补充ui页面的文件名，在PM中补充实例。新建page的步骤（
@@ -115,10 +121,15 @@
 					 <p>元素的定位：这一套框架运行的时候就已经直接调用api了，需要的是进入到已经调用api后的页面，去定位元素</p>
 						<p>DM的作用，StartApp的作用，page开头的那些内容定义是什么意思</p>
 					</details>
+					
+					<input type="text" height="300px" id="autotestpanel_04" onkeydown="keydown('autotestpanel_04')">
+					<button onclick="downloaddata('autotestpanel_04')">自动化框架学习</button>
 				</div>
 				<div class="card">
 					<h3>测试心得记录</h3>
 					<p>笔记记录.</p>
+					<input type="text" height="300px" id="autotestpanel_02" onkeydown="keydown('autotestpanel_02')">
+					<button onclick="downloaddata('autotestpanel_02')">细节更新</button>
 					<details>
 						<summary>学习笔记</summary>
 						<p>细节</p>
@@ -126,6 +137,7 @@
 				</div>
 			</div>
 			
+			<div class="info"></div>
 		</div>
 		</section>
 	</div><!--内容结束-->

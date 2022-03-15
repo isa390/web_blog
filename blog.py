@@ -24,6 +24,26 @@ ret_card = {
 paths = [
 "onehour",
 "spltalk",
+"autotestpanel_01",
+"autotestpanel_02",
+"autotestpanel_03",
+"autotestpanel_04",
+"autotestpanel_05",
+"autotestpanel_06",
+"developanel_01",
+"developanel_02",
+"developanel_03",
+"developanel_04",
+"developanel_05",
+"developanel_06",
+"developanel_07",
+"developanel_08",
+"developanel_09",
+"developanel_10",
+"developanel_11",
+"developanel_12",
+"developanel_13",
+"developanel_14",
 ]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
