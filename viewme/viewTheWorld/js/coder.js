@@ -79,7 +79,7 @@ function getPage(input){
     getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
     getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
     getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
-    getNextLine('blank16')+'                return action;'+
+    getNextLine('blank16')+'                return action;'+ 
     getNextLine('blank12')+'            }'+ 
     getNextLine('blank01')+''+
     getNextLine('blank12')+'            @Override'+
