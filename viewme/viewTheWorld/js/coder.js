@@ -3,7 +3,10 @@ function keydown(topic){
         uploaddata(topic);
      }
 }
-
+var blank1 = 4;
+var blank2 = 8;
+var blank3 = 12;
+var blank4 = 16;
 function uploaddata(topic){
     console.log("ok")
     var data = document.getElementById(topic).value;
@@ -17,7 +20,7 @@ function uploaddata(topic){
 
     var OUTPUT = steps+DM+CM+SM+CASE+PAGE;
     firstLetterToUpcase(data);
-    document.querySelector('.info').innerHTML = OUTPUT; //显示
+    document.querySelector('.info').innerHTML = getAsyncStep(data); //显示
 }
 
 function firstLetterToUpcase(input){
@@ -26,46 +29,43 @@ function firstLetterToUpcase(input){
       var last = input.substring(1);
       var output = fisrt+last;
       console.log(output);
+      return output;
    }
 }
 
+function getNextLine(length){
+   var output = '<br>';
+   for(i = 0;i< length;i++){
+      output+= '&nbsp;';
+   }
+   return output;
+}
+
 function getAsyncStep(input){
-    var code = 
-    "
-    public class OpenDocument extends AsyncStep {
-    
-        @Override
-        public String apiName() {
-            return "openDocument";
-        }
-    
-        @Override
-        public String scope() {
-            return "";
-        }
-    
-        @Step
-        public void openDocument(Map<String, Object> params,NetCallback netCallback) {
-            asyncStep(params, new NetCallback() {
-                @Override
-                public void onSuccess(String result) {
-                    if (netCallback!=null){
-                        netCallback.onSuccess(result);
-                    }
-                    // 将结果赋值给Context
-                    OpenDocumentContext openDocumentContext = setData2Context(result, OpenDocumentContext.class);
-                    if (openDocumentContext != null) {
-                        CM.openDocumentContext = openDocumentContext;
-                    }
-                }
-    
-                @Override
-                public void onFail(String msg) {
-                    if (netCallback!=null){
-                        netCallback.onFail(msg);
-                    }
-                }
-            });
-        }
-    }"
+    var code = ''+
+    'public class '+ firstLetterToUpcase(input)+' extends AsyncStep {' +
+     getNextLine(blank1)+'@Override' +
+     getNextLine(blank1)+'public String apiName() {' +
+     getNextLine(blank2)+'return "' +input+'";}'+
+     getNextLine(blank1)+'@Override' +
+     getNextLine(blank1)+'public String scope() {return "";}' +
+     getNextLine(blank1)+'@Step' +
+     getNextLine(blank1)+'public void openDocument(Map<String, Object> params,NetCallback netCallback) {' +
+     getNextLine(blank2)+'       asyncStep(params, new NetCallback() {' +
+     getNextLine(blank2)+'       @Override' +
+     getNextLine(blank2)+'       public void onSuccess(String result) {' +
+     getNextLine(blank3)+'           if (netCallback!=null){' +
+     getNextLine(blank3)+'            netCallback.onSuccess(result);}' +
+     getNextLine(blank3)+            firstLetterToUpcase(input)+'Context '+input+'Context = setData2Context(result, '+firstLetterToUpcase(input)+'Context.class);' +
+     getNextLine(blank3)+'             // 将结果赋值给Context' +
+     getNextLine(blank3)+'            if ('+input+'Context != null) {CM.'+input+'Context = '+input+'Context;}' +
+     getNextLine(blank3)+'                }' +
+     getNextLine(blank2)+'        @Override' +
+     getNextLine(blank2)+'        public void onFail(String msg) {'+
+     getNextLine(blank3)+'        netCallback.onFail(msg);'+
+     getNextLine(blank2)+'        }'+
+     getNextLine(blank2)+'        });'+
+     getNextLine(blank1)+'        }';
+    console.log(code);
+   return code;
 }
