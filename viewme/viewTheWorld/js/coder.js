@@ -19,7 +19,10 @@ function uploaddata(topic){
     getContext(data)+'<br>'+
     getSM(data)+'<br>'+
     getCase(data)+'<br>'+
-    getPage(data);
+    getPage(data)+'<br>'+
+    getPM(data)+'<br>'+
+    getProperties()+'<br>'+
+    '记得启动start，suiteLisetner还有testListener在本地调试的时候可以先屏蔽掉代码';
     firstLetterToUpcase(data);
     document.querySelector('.info').innerHTML = OUTPUT; //显示
 }
@@ -42,12 +45,68 @@ function getNextLine(blankn){
    }
    return output;
 }
-function getPage(input){
 
+function getProperties(){
+    var code = 'application.properties指向自己的配置xx_base,注意这里的base不用指向application.properties：device.properties中也要加入自己的设备号<br>'+
+    'preMark=此处是自己的配置文件的名字<br>'+
+    getNextLine('blank00')+'D1.type=D1对应的设备'+
+    getNextLine('blank00')+'D1.serialNum=adb devices 的那一窜数字'+
+    getNextLine('blank00')+'D1.useLocalPackage=是否使用本地包，true的话就是，就不用每次去网上拉包'+
+    getNextLine('blank00')+'D1.pkgName=com.ss.android.lark #这个是包的名字'+
+    getNextLine('blank00')+'isOnlyCheck=false'+
+    getNextLine('blank00')+'application.properties 中的账号密码'+
+    getNextLine('blank00')+'OpenPlatformSuiteListener 中的public void onFinish(ISuite iSuite) {在本地调试中全部屏蔽掉'+
+    getNextLine('blank00')+'OpenPlatformTestListener 中的 public void onTestFailure(ITestResult iTestResult) {在本地调试中只屏蔽掉函数里面的内容就可以了'
+   
+    return code;
+}
+function getPM(input){
+    var code = '在PM.java中创建：<br>'+
+    '    public '+firstLetterToUpcase(input)+'Page ' +input+'Page(){return new ' + firstLetterToUpcase(input)+'Page(driver);}'
+    return code
+}
+function getPage(input){
+    var code = '创建Page文件： '+firstLetterToUpcase(input)+'Page.java<br>'+
+    getNextLine('blank00')+'public class ' + firstLetterToUpcase(input)+'Page extends BasePage {'+
+getNextLine('blank04')+'    public ' + firstLetterToUpcase(input)+'Page(DriverAdapter driver) {'+
+getNextLine('blank08')+'        super(driver);'+
+getNextLine('blank04')+'    }'+
+getNextLine('blank04')+'    public void xxxxxxxxxx() {'+
+getNextLine('blank08')+'        Element element = new Element(driver, new PlatformElementCallback() {'+
+getNextLine('blank12')+'            @Override'+
+getNextLine('blank12')+'            public BaseAction ios() {'+
+getNextLine('blank16')+'                Action action = new Action.Builder().setUPath("UPath(type_ == \'XCUIElementTypeApplication\')/0/0/0/0/0/0/0/0/0/0/0/2/0")'+
+getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
+getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
+getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
+getNextLine('blank16')+'                return action;'+
+getNextLine('blank12')+'            }'+
+getNextLine('blank01')+''+
+getNextLine('blank12')+'            @Override'+
+getNextLine('blank12')+'            public BaseAction android() {'+
+getNextLine('blank16')+'                Action action = new Action.Builder().setUPath("UPath(id_ == \'title_bar_back\')")'+
+getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
+getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
+getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
+getNextLine('blank16')+'                return action;'+
+getNextLine('blank01')+''+
+getNextLine('blank12')+'            }'+
+getNextLine('blank00')+'//            @Override'+
+getNextLine('blank00')+'//            public BaseAction mac(){'+
+getNextLine('blank00')+'//                PCAction action = new PCAction.Builder().setActionMode(ActionMode.Native).mac_bundle_id("");'+
+getNextLine('blank00')+'//                return action;'+
+getNextLine('blank00')+'//            }'+
+getNextLine('blank08')+'        });'+
+getNextLine('blank08')+'        element.click();//element的方法都是封装好了的，可以看到点击啊，发送这类的'+
+getNextLine('blank04')+'    }'+
+getNextLine('blank01')+''+
+getNextLine('blank00')+'}'
+
+return code;
 }
 function getSM(input){
     var code = '在SM.java中创建：<br>'+
-    '    public static '+firstLetterToUpcase(input)+' ' +input+' = new ' + firstLetterToUpcase(input)+';'
+    '    public static '+firstLetterToUpcase(input)+' ' +input+' = new ' + firstLetterToUpcase(input)+'();'
 
     return code
 }
