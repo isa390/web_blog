@@ -22,7 +22,7 @@ function uploaddata(topic){
     getPage(data)+'<br>'+
     getPM(data)+'<br>'+
     getProperties()+'<br>'+
-    '记得启动start';
+    '记得启动start，最后调试的时候一定要打开seal';
     firstLetterToUpcase(data);
     document.querySelector('.info').innerHTML = OUTPUT; //显示
 }
