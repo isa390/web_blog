@@ -22,7 +22,7 @@ function uploaddata(topic){
     getPage(data)+'<br>'+
     getPM(data)+'<br>'+
     getProperties()+'<br>'+
-    '记得启动start，suiteLisetner还有testListener在本地调试的时候可以先屏蔽掉代码';
+    '记得启动start';
     firstLetterToUpcase(data);
     document.querySelector('.info').innerHTML = OUTPUT; //显示
 }
@@ -47,7 +47,7 @@ function getNextLine(blankn){
 }
   
 function getProperties(){
-    var code = 'application.properties指向自己的配置xx_base,注意这里的base不用指向application.properties：device.properties中也要加入自己的设备号<br>'+
+    var code = 'application.properties指向自己的配置xx_base,注意这里的base不用指向application.properties,并将start里面的ip地址填到这个地方：device.properties中也要加入自己的设备号<br>'+
     'preMark=此处是自己的配置文件的名字<br>'+
     getNextLine('blank00')+'D1.type=D1对应的设备'+
     getNextLine('blank00')+'D1.serialNum=adb devices 的那一窜数字'+
