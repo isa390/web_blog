@@ -85,7 +85,7 @@ function getPage(input){
     getNextLine('blank12')+'            @Override'+
     getNextLine('blank12')+'            public BaseAction android() {'+
     getNextLine('blank16')+'                Action action = new Action.Builder().setUPath("UPath(id_ == \'title_bar_back\')")'+
-    getNextLine('blank24')+'                        .setConstType(ViewType.CONTROL)'+
+    getNextLine('blank24')+'                        .setConstType(ViewType.TEXTVIEW)'+
     getNextLine('blank24')+'                        .setAssertType(AssertType.WAIT_FOR_INVISIBLE)'+
     getNextLine('blank24')+'                        .setTip("根据upath进行点击").build();'+
     getNextLine('blank16')+'                return action;'+
