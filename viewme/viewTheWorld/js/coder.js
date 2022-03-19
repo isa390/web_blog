@@ -91,11 +91,11 @@ function getPage(input){
     getNextLine('blank16')+'                return action;'+
     getNextLine('blank01')+''+
     getNextLine('blank12')+'            }'+
-    getNextLine('blank00')+'//            @Override'+
-    getNextLine('blank00')+'//            public BaseAction mac(){'+
-    getNextLine('blank00')+'//                PCAction action = new PCAction.Builder().setActionMode(ActionMode.Native).mac_bundle_id("");'+
-    getNextLine('blank00')+'//                return action;'+
-    getNextLine('blank00')+'//            }'+
+    getNextLine('blank12')+'            @Override'+
+    getNextLine('blank12')+'            public BaseAction mac(){'+
+    getNextLine('blank16')+'                PCAction action = new PCAction.Builder().setActionMode(ActionMode.Native).mac_bundle_id("");'+
+    getNextLine('blank16')+'                return action;'+
+    getNextLine('blank12')+'            }'+
     getNextLine('blank08')+'        });'+
     getNextLine('blank08')+'        element.click();//element的方法都是封装好了的，可以看到点击啊，发送这类的'+
     getNextLine('blank04')+'    }'+
