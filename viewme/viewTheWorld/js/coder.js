@@ -103,7 +103,7 @@ function getPage(input){
     getNextLine('blank00')+'}';
 
     return code;
-}
+} 
 function getSM(input){
     var code = '在SM.java中创建：<br>'+
     '    public static '+firstLetterToUpcase(input)+' ' +input+' = new ' + firstLetterToUpcase(input)+'();'
