@@ -102,7 +102,7 @@ function getPage(input){
     getNextLine('blank01')+''+
     getNextLine('blank00')+'}';
 
-    return code;
+    return code;  
 } 
 function getSM(input){
     var code = '在SM.java中创建：<br>'+
