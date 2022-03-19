@@ -161,6 +161,7 @@ function getCase(input){
     getNextLine('blank01')+''+
     getNextLine('blank04')+'    @Override'+
     getNextLine('blank04')+'    public void doBeforeStep(Map<String, Object> otherParam, Map<String, Object> params) {'+
+    getNextLine('blank08')+'        CM.'+input+'Context = new '+firstLetterToUpcase(input)+'Context();'+
     getNextLine('blank04')+'    }'+
     getNextLine('blank00')+'}'
     return code;
