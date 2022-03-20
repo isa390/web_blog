@@ -62,7 +62,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             if ctype.split("/")[0] == 'ping':
                 return
             url = 'http://127.0.0.1:5001'
-            myobj = {'somekey': 'somevalue'}
+            myobj = {'somekey': 'somevalue'}  
             x = requests.post(url, data = myobj)
             return
         if (dealPost(self)):
