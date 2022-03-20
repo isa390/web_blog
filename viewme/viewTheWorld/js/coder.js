@@ -100,7 +100,7 @@ function getPage(input){
     getNextLine('blank08')+'        element.click();//element的方法都是封装好了的，可以看到点击啊，发送这类的'+
     getNextLine('blank04')+'    }'+
     getNextLine('blank01')+''+
-    getNextLine('blank00')+'}';
+    getNextLine('blank00')+'}';  
 
     return code;  
 } 
