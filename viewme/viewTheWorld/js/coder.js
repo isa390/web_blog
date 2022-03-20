@@ -22,7 +22,10 @@ function uploaddata(topic){
     getPage(data)+'<br>'+
     getPM(data)+'<br>'+
     getProperties()+'<br>'+
-    '记得启动start，最后调试的时候一定要打开seal;pc端调试地址：chrome://inspect/#devices';
+    '记得启动start，最后调试的时候一定要打开seal;pc端调试地址：chrome://inspect/#devices'+'<br>'+
+    'PM/DM/SM:main/java/com/bytedance/lark/qa/business/openPlatform/api/ui'+'<br>'+
+'CM:main/java/com/bytedance/lark/qa/business/openPlatform/api/content';
+
     firstLetterToUpcase(data);
     document.querySelector('.info').innerHTML = OUTPUT; //显示
 }
@@ -66,7 +69,16 @@ function getPM(input){
     return code
 }
 function getPage(input){
-    var code = '创建Page文件： '+firstLetterToUpcase(input)+'Page.java<br>'+
+
+
+
+    var code = 
+    '创建Page文件： '+firstLetterToUpcase(input)+'Page.java<br>'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.sdk.base.ui.BasePage;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.sdk.base.ui.Element;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.sdk.base.ui.PlatformElementCallback;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.sdk.driver.DriverAdapter;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.sdk.driver.defensor.action.*;'+
     getNextLine('blank00')+'public class ' + firstLetterToUpcase(input)+'Page extends BasePage {'+
     getNextLine('blank04')+'    public ' + firstLetterToUpcase(input)+'Page(DriverAdapter driver) {'+
     getNextLine('blank08')+'        super(driver);'+
@@ -115,6 +127,20 @@ function getSM(input){
 }
 function getCase(input){
     var code = '创建case文件： '+firstLetterToUpcase(input)+'Case.java<br>'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.api.SM;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.api.ui.DM;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.base.AssertType;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.base.BaseOpenPlatformCase;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.base.data.BaseDataBean;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.base.data.Params;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.base.step.OpenPlatformBaseStep;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.context.CM;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.business.openplatform.context.ChooseChatContext;'+
+    getNextLine('blank00')+'import com.bytedance.lark.qa.sdk.base.net.NetCallback;'+
+    getNextLine('blank00')+'import lombok.extern.slf4j.Slf4j;'+
+    getNextLine('blank00')+'import org.testng.annotations.BeforeClass;'+
+
+    getNextLine('blank00')+'import java.util.Map;'+
     getNextLine('blank00')+'@Slf4j'+
     getNextLine('blank00')+'public class ' + firstLetterToUpcase(input)+'Case extends BaseOpenPlatformCase {'+
     getNextLine('blank04')+'    @BeforeClass'+
