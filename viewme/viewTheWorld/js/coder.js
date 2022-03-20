@@ -93,7 +93,10 @@ function getPage(input){
     getNextLine('blank12')+'            }'+
     getNextLine('blank12')+'            @Override'+
     getNextLine('blank12')+'            public BaseAction mac(){'+
-    getNextLine('blank16')+'                PCAction action = new PCAction.Builder().setActionMode(ActionMode.Native).mac_bundle_id("");'+
+    getNextLine('blank16')+'                PCAction action = new PCAction.Builder().element_type(ElementType.XPATH)'+
+    getNextLine('blank24')+'                        .element_value("//*iv")'+
+    getNextLine('blank24')+'                        .page("webcontent/messenger")'+
+    getNextLine('blank24')+'                        .build();'+
     getNextLine('blank16')+'                return action;'+
     getNextLine('blank12')+'            }'+
     getNextLine('blank08')+'        });'+
