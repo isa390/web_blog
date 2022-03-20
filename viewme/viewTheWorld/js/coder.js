@@ -207,6 +207,14 @@ function getContext(input){
 function getAsyncStep(input){
    var upCase = firstLetterToUpcase(input);
     var code = ''+
+    getNextLine('blank00')+'  import com.bytedance.lark.qa.business.openplatform.base.step.AsyncStep;'+
+    getNextLine('blank00')+' import com.bytedance.lark.qa.business.openplatform.context.CM;'+
+    getNextLine('blank00')+' import com.bytedance.lark.qa.business.openplatform.context.ChooseChatContext;'+
+    getNextLine('blank00')+' import com.bytedance.lark.qa.business.openplatform.context.OpenDocumentContext;'+
+    getNextLine('blank00')+' import com.bytedance.lark.qa.sdk.base.net.NetCallback;'+
+    getNextLine('blank00')+' import io.qameta.allure.Step;'+
+    
+    getNextLine('blank00')+ 'import java.util.Map;'+
     getNextLine('blank00')+'public class '+upCase+' extends AsyncStep {'+
 getNextLine('blank020')+'    '+
 getNextLine('blank04')+'	@Override'+
