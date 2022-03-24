@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>万物模板生成器</title>
+  <link rel="stylesheet" href="../viewTheWorld/view.css">
+  <script src="../../data.js" type="text/javascript"></script>
+  <script src="./js/Temples.js" type="text/javascript" ></script>
+ </head>
+ <body>
+	<header>
+	</header>
+		<section class="purple-section">
+		<div class="wrapper">
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>用例生成引导</h3>
+					<p>怎样拥有一份专业的测试用例</p>
+					<p></p>
+					<input type="text" height="300px" id="bookread_id" onkeydown="keydown('bookread_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>做事的模板</h3>
+					<p>是否做一件事，你的回答是什么.</p>
+					<input type="text" height="300px" id="thingdeal_id" onkeydown="keydown('thingdeal_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，</p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>社交模板</h3>
+					<p>我以一个什么样的形态存在</p>
+					<p></p>
+					<input type="text" height="300px" id="person_id" onkeydown="keydown('person_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>软件架构设计</h3>
+					<p>请在这里输入软件的名字.</p>
+					<input type="text" height="300px" id="schema_id" onkeydown="keydown('schema_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，
+						</p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>谈话模板</h3>
+					<p>任何一个谈话，都应该是有一个固定的目的和动机的，在这里输入谈话的主题</p>
+					<p></p>
+					<input type="text" height="300px" id="talk_id" onkeydown="keydown('talk_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>评判一个人的模板</h3>
+					<p>请输入这个人的名字.</p>
+					<input type="text" height="300px" id="judgeperson_id" onkeydown="keydown('judgeperson_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1,觉察任何一个人的任何的维度</p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>评判一件事的模板</h3>
+					<p>对某个事情，自己该怎么看，在这里输入事情</p>
+					<p></p>
+					<input type="text" height="300px" id="judgething_id" onkeydown="keydown('judgething_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>GTD模板图</h3>
+					<p>请输入生活中各种随机的输入的"事务".</p>
+					<input type="text" height="300px" id="gtd_id" onkeydown="keydown('gtd_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p></p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>紧急预警事件</h3>
+					<p>当遇到紧急事态的时候</p>
+					<p></p>
+					<input type="text" height="300px" id="dangerousthing_id" onkeydown="keydown('dangerousthing_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>GTD模板图</h3>
+					<p>请输入生活中各种随机的输入的"事务".</p>
+					<input type="text" height="300px" id="gtd_id" onkeydown="keydown('gtd_id')">
+					<details>
+						<summary>具体细节：</summary>
+						<p></p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<input type="text" height="300px" id="jilu">
+					<button onclick="uploaddata('jilu','templething_01')">提交回答模板的答案</button>
+					<button onclick="downloaddata('templething_01')">显示已有的回答</button>
+					<button onclick="nextpage('jilu')">添加换行符</button><br>
+					<button onclick="copycontent('jilu')">复制内容</button>
+					<!-- <button onclick="pastcontent('jilu')">粘贴内容</button> -->
+				</div>
+				<div class="card">
+					<div class="info007">规定策略，成就彼此</div>  
+				</div>
+			</div>
+			
+			<div class="info"></div>
+		</div>
+		</section>
+	</div><!--内容结束-->
+
+	<footer><!--页脚开始-->	
+		<ul class="share-group">
+		</ul>
+		<div class="copy" >
+			&copy 此处的意义，在于订立一切可以作为的模板，流程，用于指导自己的行为和规范自己的操作，此处的用处在于引导以及省时省力。
+			<p>此处的意义，在于根据具体的事情，生成自动的模板，针对模板来进行回答，更有一种神圣天然之所问。</p>
+		</div>
+	</footer><!--页脚结束-->
+	</div>
+	</body>
+</html>
+
