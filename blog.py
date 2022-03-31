@@ -456,7 +456,7 @@ def dealPost(self):
             self.end_headers()
             self.wfile.write("ok".encode())
             url = 'http://127.0.0.1:5001'
-            myobj = {'somekey': 'somevalue'}  
+            myobj = {'somekey': 'somevalue'}    
             x = requests.post(url, data = myobj)
             return True
 
