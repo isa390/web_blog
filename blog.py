@@ -441,7 +441,7 @@ def dealPost(self):
                 create__filea("/tmp/blog/"+path+".txt",obj)
             except Exception as e:
                 print(str(e))
-            return True
+            return True 
         elif(ctype == 'get'+path):
             print(ctype)
             #f = open("E:\AmesomeCloud\Blog2Me"+"\\blog\\buildme.txt","rb")
