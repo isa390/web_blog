@@ -50,7 +50,12 @@ paths = [
 "ClassProcess_04",
 "ClassProcess_05",
 "ClassProcess_06",
-"ClassProcess_07",
+"NeedProcess_01",
+"NeedProcess_02",
+"NeedProcess_03",
+"NeedProcess_04",
+"NeedProcess_05",
+"NeedProcess_06",
 ]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
