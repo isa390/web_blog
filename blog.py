@@ -461,7 +461,7 @@ def dealPost(self):
             self.send_response(200)   
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
-            self.wfile.write("ok".encode())
+            self.wfile.write("getpullupdate".encode())
             url = 'http://127.0.0.1:5001'
             myobj = {'somekey': 'somevalue'}    
             x = requests.post(url, data = myobj)
