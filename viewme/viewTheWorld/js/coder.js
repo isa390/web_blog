@@ -24,7 +24,8 @@ function uploaddata(topic){
     getProperties()+'<br>'+
     '记得启动start，最后调试的时候一定要打开seal;pc端调试地址：chrome://inspect/#devices'+'<br>'+
     'PM/DM/SM:main/java/com/bytedance/lark/qa/business/openPlatform/api/ui'+'<br>'+
-'CM:main/java/com/bytedance/lark/qa/business/openPlatform/api/content';
+'CM:main/java/com/bytedance/lark/qa/business/openPlatform/api/content'+
+'D1.pkgName=com.larksuite.feishu.inhouse #D1.pkgName=com.ss.android.lark';
 
     firstLetterToUpcase(data);
     document.querySelector('.info').innerHTML = OUTPUT; //显示
