@@ -44,6 +44,13 @@ paths = [
 "developanel_12",
 "developanel_13",
 "developanel_14",
+"ClassProcess_01",
+"ClassProcess_02",
+"ClassProcess_03",
+"ClassProcess_04",
+"ClassProcess_05",
+"ClassProcess_06",
+"ClassProcess_07",
 ]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):

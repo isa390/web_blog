@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>高效学习流程</title>
+  <link rel="stylesheet" href="../viewTheWorld/view.css">
+  <script src="../../data.js" type="text/javascript"></script>
+  <script src="./js/ModelJs.js" type="text/javascript" ></script>
+ </head>
+ <body>
+	<header>
+	</header>
+		<section class="purple-section">
+		<div class="wrapper">
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>课前十分钟</h3>
+					<p>简要回顾之前学习的内容</p>
+					<p>大概了解接下来的学习内容</p>
+					<input type="text" height="300px" id="ClassProcess_01" onkeydown="keydown('ClassProcess_01')">
+					<button onclick="downloaddata('ClassProcess_01')">回车之前先复制</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>坚持写，写满至少10分钟</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>课中记录学习的过程</h3>
+					<p>边听边简要记录一些重要的点，后期依据这个点来完善</p>
+					<p>形成初步的笔记</p>
+					<input type="text" height="300px" id="ClassProcess_02" onkeydown="keydown('ClassProcess_02')">
+					<button onclick="downloaddata('ClassProcess_02')">回车之前先复制</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>记录整个过程</p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>课后，来一次OneHour </h3>
+					<p>整体消化一次，将能够暴露出来的问题，尽量暴露出来，伺机解决</p>
+					<p>融合新学习的内容</p>
+					<input type="text" height="300px" id="ClassProcess_03" onkeydown="keydown('ClassProcess_03')">
+					<button onclick="downloaddata('ClassProcess_03')">回车之前先复制</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>尽量写，能写就写</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>最终的笔记</h3>
+					<p>在这里整理出最终的当次的笔记</p>
+					<p>笔记放在此处，整理出来之后，放入md文件，存入github之中</p>
+					<input type="text" height="300px" id="ClassProcess_04" onkeydown="keydown('ClassProcess_04')">
+					<button onclick="downloaddata('ClassProcess_04')">回车之前先复制</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>形成最终的笔记</p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>实践过程的记录和整理 </h3>
+					<p>在实践的过程中，出现的问题，记录下来，继续实践，在方便的时候再回来解决</p>
+					<p></p>
+					<input type="text" height="300px" id="ClassProcess_05" onkeydown="keydown('ClassProcess_05')">
+					<button onclick="downloaddata('ClassProcess_05')">回车之前先复制</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>记录实战</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>其他</h3>
+					<p>记录一些其他的内容</p>
+					<p></p>
+					<input type="text" height="300px" id="ClassProcess_06" onkeydown="keydown('ClassProcess_06')">
+					<button onclick="downloaddata('ClassProcess_06')">回车之前先复制</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>七七八八</p>
+					</details>
+				</div>
+			</div>
+			
+			<div class="info"></div>
+		</div>
+		</section>
+	</div><!--内容结束-->
+
+	<footer><!--页脚开始-->	
+		<ul class="share-group">
+		</ul>
+		<div class="copy" >
+			<p>以流程优化学习</p>
+		</div>
+	</footer><!--页脚结束-->
+	</div>
+	</body>
+</html>
+
