@@ -60,6 +60,16 @@ paths = [
 "BuildCodeFeel_02",
 "BuildCodeFeel_03",
 "BuildCodeFeel_04",
+"HighEffectCard_01",
+"HighEffectCard_02",
+"HighEffectCard_03",
+"HighEffectCard_04",
+"ByteDanceValue_01",
+"ByteDanceValue_02",
+"ByteDanceValue_03",
+"ByteDanceValue_04",
+"xxxxxxxxx",
+"xxxxxxxxxxxxxx",
 ]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
