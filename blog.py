@@ -68,7 +68,10 @@ paths = [
 "ByteDanceValue_02",
 "ByteDanceValue_03",
 "ByteDanceValue_04",
-"xxxxxxxxx",
+"StructuredWoking_01",
+"StructuredWoking_02",
+"StructuredWoking_03",
+"StructuredWoking_04",
 "xxxxxxxxxxxxxx",
 ]
 global_id = "no initial"
