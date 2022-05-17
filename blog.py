@@ -72,7 +72,10 @@ paths = [
 "StructuredWoking_02",
 "StructuredWoking_03",
 "StructuredWoking_04",
-"xxxxxxxxxxxxxx",
+"fullPowerModel_01",
+"fullPowerModel_02",
+"fullPowerModel_03",
+"fullPowerModel_04",
 ]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
