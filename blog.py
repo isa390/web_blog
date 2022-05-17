@@ -76,6 +76,12 @@ paths = [
 "fullPowerModel_02",
 "fullPowerModel_03",
 "fullPowerModel_04",
+"fullPowerModel_05",
+"fullPowerModel_06",
+"fullPowerModel_07",
+"fullPowerModel_08",
+"fullPowerModel_09",
+"fullPowerModel_10",
 ]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
