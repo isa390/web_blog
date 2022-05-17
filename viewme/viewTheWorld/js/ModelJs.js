@@ -22,7 +22,7 @@ function uploaddata(topic){
     var time2 = new Date().Format("yyyy-MM-dd HH:mm:ss");  
     console.log(time2)
     console.log(document.getElementById(topic).value)
-    var data = time2+":"+data;
+    var data = time2+":"+data+"<br>";
     xhr.send(data);    
 }
 Date.prototype.Format = function (fmt) {
