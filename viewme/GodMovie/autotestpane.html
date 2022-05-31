@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>测试担当</title>
+  <link rel="stylesheet" href="../../main.css">
+  <link rel="stylesheet" href="movie.css">
+  <script src="../../data.js" type="text/javascript"></script>
+  <script src="./js/openweb.js"></script>
+  <script src="./js/ModelJs.js"></script>
+ </head>
+ <body>
+ 	<div class="main-wrapper">
+	<header>
+	</header>
+
+	<div class="content"><!--内容开始-->
+		<section class="green-section">
+			<div class="wrapper">
+				<div>
+					<h2>学习面板之自动化测试</h2>
+					<div class="hr"></div>
+					<p class="sub-heading">神就是道，道就是规律，规律如来，容不得你思议，按规律办事的人就是神 </p>
+					<p>有道无术，术尚可求，有术无道，止于术。神即道，道法自然,如来!</p>
+					<p>收集的目的在于使用的时候，能够快速定位到，找到</p>
+				</div>
+			</div>
+		</section>
+		<section class="gray-section">
+
+		</section>
+
+		<section class="purple-section">
+		<div class="wrapper">
+
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3 onclick="openwebclick('Awesome Test Automation')">Awesome Test Automation</h3>
+					<p>A curated list of awesome test automation frameworks, tools, libraries, 
+						and software for different programming languages to help 
+						software engineers easily bootstrap test automation upon necessity..</p>
+					<details>
+						<summary>阅读笔记</summary>
+						<p>细节</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3 onclick="openwebclick('AutomationTest')">自动化测试</h3>
+					<p>本项目支持接口自动化测试、app ui自动化测试、web ui自动化测试、性能测试.</p>
+					<details>
+						<summary>阅读笔记</summary>
+						<p>细节</p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>自动化测试优秀文集</h3>
+					<p>此处收集众多的自动化测试文集.</p>
+					<details>
+						<summary>链接列表</summary><br>
+						<a href="https://segmentfault.com/a/1190000022303934"  target="_blank">2020年十大最佳自动化测试工具</a>
+					
+					</details>
+				</div>
+				<div class="card">
+					<h3 onclick="openwebclick('FFmpeg')">测试优秀文集</h3>
+					<p>此处收集测试相关的文集链接.</p>
+					<details>
+						<summary>链接列表</summary>
+						<br>
+						<a href="http://testerhome.com/wiki"  target="_blank">TesterHome 中文社区的精华文章</a><br><br>
+						<a href="http://www.51testing.com/html/news.html"  target="_blank">51文章资料精选</a><br><br>
+						<a href="http://www.51ste.com/share/index.php"  target="_blank">软件测试部落测试分享</a><br><br>
+						<a href="http://www.softtest.com/test/case/"  target="_blank">软件测试网</a><br><br>
+						<a href="https://www.testclass.cn/category/automation_test"  target="_blank">testclass测试</a><br><br>
+						<a href="http://www.cydtest.com/"  target="_blank">陈永达的测试站</a><br><br>
+					
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>自动化课程学习笔记</h3>
+					<p>笔记记录.</p>
+					<p></p>
+					<details>
+						<summary>python</summary>
+						<p>列表、数组、字典、json.python中写文件和读文件是一样的</p>
+						<p>用思维笔记的方式把各个知识点归纳总结，归纳总结的同时把代码自己跑一遍，并把思考题做下来</p>
+						<p>类、实例，界门纲目科属种</p>
+						<p>反射与单例模式.反射hasattr,getattr,setattr</p>
+					</details>
+					<input type="text" height="300px" id="autotestpanel_01" onkeydown="keydown('autotestpanel_01')">
+					<button onclick="downloaddata('autotestpanel_01')">python</button>
+					<details>
+						<summary>appium</summary>
+						<p>细节</p>
+					</details>
+					<input type="text" height="300px" id="autotestpanel_03" onkeydown="keydown('autotestpanel_03')">
+					<button onclick="downloaddata('autotestpanel_03')">appium</button>
+					<details>
+						<summary>自动化框架学习</summary>
+						<p>在case末尾doAfterStep后面补充ui页面的文件名，在PM中补充实例。新建page的步骤（
+							1、在src.main.java.com-bytedance-lark-qa.business.openplatform.api.ui.pages新建一个文件夹;
+							2、在pm中创建一个实例；
+							3、在对应的case文件代码末尾doAfterStep后面补充ui页面的函数操作)</p>
+						<p>page内容的编写（
+					1、public class 文件名 extends BasePage；
+				    2、public void 事件名（）{}
+				    3、拷贝 Element element = new Element(driver, new PlatformElementCallback() {
+					4、点击右键，点解Generate（生成）
+				    5、点击override 生成需要的funtion）
+				     </p>
+					 <p>case的编写（
+						 1、public class 文件名 extends BaseOpenPlatformCase（）{};
+						 2、解决错误，所有报的错误，import所有的文件；
+						 3、点击右键，点解Generate（生成）
+				         4、点击override 生成需要的funtion），比对其他case用到的funtion；
+						 5、对比case和page之间联系的方法，仿照编写。）
+					 </p>
+					 <p>元素的定位：这一套框架运行的时候就已经直接调用api了，需要的是进入到已经调用api后的页面，去定位元素</p>
+						<p>DM的作用，StartApp的作用，page开头的那些内容定义是什么意思</p>
+					</details>
+					
+					<input type="text" height="300px" id="autotestpanel_04" onkeydown="keydown('autotestpanel_04')">
+					<button onclick="downloaddata('autotestpanel_04')">自动化框架学习</button>
+				</div>
+				<div class="card">
+					<h3>测试心得记录</h3>
+					<p>笔记记录.</p>
+					<input type="text" height="300px" id="autotestpanel_02" onkeydown="keydown('autotestpanel_02')">
+					<button onclick="downloaddata('autotestpanel_02')">细节更新</button>
+					<details>
+						<summary>学习笔记</summary>
+						<p>细节</p>
+					</details>
+				</div>
+			</div>
+			
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>课程笔记</h3>
+					<p>边听课，边记录笔记</p>
+					<p></p>
+					<input type="text" height="300px" id="autotestpanel_05" onkeydown="keydown('autotestpanel_05')">
+					<button onclick="downloaddata('autotestpanel_05')">细节更新</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>1，重要的知识点有哪些</p>
+						<p>2，哪些问题需要额外注意</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>其他</h3>
+					<p>不需要分类的记录.</p>
+					<input type="text" height="300px" id="autotestpanel_05" onkeydown="keydown('autotestpanel_05')">
+					<button onclick="downloaddata('autotestpanel_05')">细节更新</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>
+						</p>
+					</details>
+				</div>
+			</div>
+			<div class="info"></div>
+		</div>
+		</section>
+	</div><!--内容结束-->
+
+	<footer><!--页脚开始-->	
+		<ul class="share-group">
+		</ul>
+
+		<div class="copy">
+			&copy 施展测试-2022
+		</div>
+	</footer><!--页脚结束-->
+	</div>
+	</body>
+</html>
+

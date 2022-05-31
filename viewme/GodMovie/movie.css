@@ -1,0 +1,15 @@
+.picture img {
+    width: 100px;
+    height: 100px;
+  }
+
+a{
+  color: rgb(252, 247, 247);
+  text-decoration: none;
+  font-family:"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+  font: 1em sans-serif;
+}
+summary{
+  
+  font-family:"Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}

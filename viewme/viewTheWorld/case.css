@@ -1,0 +1,12 @@
+button{
+    width: 300px;
+    height: 50px;
+    font: 2em sans-serif;
+}
+
+input{
+    height: 30px;
+}
+label{
+    height: 30px;
+}

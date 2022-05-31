@@ -8,9 +8,12 @@ from urllib import request, parse
 import cgi
 import requests
 import os
-APP_ID = "cli_a163caabc278d01b"
-APP_SECRET = "VFmozphTstd9gO9A6uHqJiGDAhJ34eIR"
-APP_VERIFICATION_TOKEN = "sHxDsDj8lUft8RvtJynA1ZuTQZEWUU2N"
+# APP_ID = "cli_a163caabc278d01b"
+# APP_SECRET = "VFmozphTstd9gO9A6uHqJiGDAhJ34eIR"
+# APP_VERIFICATION_TOKEN = "sHxDsDj8lUft8RvtJynA1ZuTQZEWUU2N"
+APP_ID = "cli_a15bebebc5b8d00b"
+APP_SECRET = "pMJXu20Pn2L2fmFIvwSrZcPmZbRnmotd"
+APP_VERIFICATION_TOKEN = "hxaTTQZc9re73RE4bsKaEcCvLxLr1NIY"
 ret_card = {
     "version": "1.0",
     "body": [{
@@ -18,6 +21,68 @@ ret_card = {
         "text": "Select"
     }]
 }
+paths = [
+"onehour",
+"spltalk",
+"autotestpanel_01",
+"autotestpanel_02",
+"autotestpanel_03",
+"autotestpanel_04",
+"autotestpanel_05",
+"autotestpanel_06",
+"developanel_01",
+"developanel_02",
+"developanel_03",
+"developanel_04",
+"developanel_05",
+"developanel_06",
+"developanel_07",
+"developanel_08",
+"developanel_09",
+"developanel_10",
+"developanel_11",
+"developanel_12",
+"developanel_13",
+"developanel_14",
+"ClassProcess_01",
+"ClassProcess_02",
+"ClassProcess_03",
+"ClassProcess_04",
+"ClassProcess_05",
+"ClassProcess_06",
+"NeedProcess_01",
+"NeedProcess_02",
+"NeedProcess_03",
+"NeedProcess_04",
+"NeedProcess_05",
+"NeedProcess_06",
+"BuildCodeFeel_01",
+"BuildCodeFeel_02",
+"BuildCodeFeel_03",
+"BuildCodeFeel_04",
+"HighEffectCard_01",
+"HighEffectCard_02",
+"HighEffectCard_03",
+"HighEffectCard_04",
+"ByteDanceValue_01",
+"ByteDanceValue_02",
+"ByteDanceValue_03",
+"ByteDanceValue_04",
+"StructuredWoking_01",
+"StructuredWoking_02",
+"StructuredWoking_03",
+"StructuredWoking_04",
+"fullPowerModel_01",
+"fullPowerModel_02",
+"fullPowerModel_03",
+"fullPowerModel_04",
+"fullPowerModel_05",
+"fullPowerModel_06",
+"fullPowerModel_07",
+"fullPowerModel_08",
+"fullPowerModel_09",
+"fullPowerModel_10",
+]
 global_id = "no initial"
 class RequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -35,10 +100,11 @@ class RequestHandler(BaseHTTPRequestHandler):
             if ctype.split("/")[0] == 'ping':
                 return
             url = 'http://127.0.0.1:5001'
-            myobj = {'somekey': 'somevalue'}
+            myobj = {'somekey': 'somevalue'}  
             x = requests.post(url, data = myobj)
             return
-        
+        if (dealPost(self)):
+          return
         # 解析请求 body
         req_body = self.rfile.read(int(self.headers['content-length']))
         obj = json.loads(req_body.decode("utf-8"))
@@ -116,6 +182,15 @@ class RequestHandler(BaseHTTPRequestHandler):
             f = open(filepath[1:],"rb")
             self.send_response(200)
             self.send_header('Content-type', 'text/javascript')
+            self.end_headers()
+            self.wfile.write(f.read())
+            print("javascript")
+            f.close()  
+        elif self.path.endswith(".md"):
+            print("enter md")
+            f = open(filepath[1:],"rb")
+            self.send_response(200)
+            self.send_header('Content-type', 'text/markdown')
             self.end_headers()
             self.wfile.write(f.read())
             print("javascript")
@@ -384,6 +459,62 @@ class RequestHandler(BaseHTTPRequestHandler):
         if code != 0:
             print("send message error, code = ", code, ", msg =", rsp_dict.get("msg", ""))
 
+
+def dealPost(self):
+  try:
+    ctype, pdict = cgi.parse_header(self.headers['update'])
+    
+    self.send_response(200)
+    self.send_header('Content-type', 'text/plain')
+    self.end_headers()
+    for path in paths:
+        if(ctype == path):
+            self.wfile.write(path.encode())
+            print(path)
+            req_body = self.rfile.read(int(self.headers['content-length']))
+            obj = req_body.decode("utf-8")
+            print(obj)
+            try:
+                #create__filea("E:\AmesomeCloud\Blog2Me"+"\\blog\\buildme.txt",obj)
+                create__filea("/tmp/blog/"+path+".txt",obj)
+            except Exception as e:
+                print(str(e))
+            return True 
+        elif(ctype == 'get'+path):
+            print(ctype)
+            #f = open("E:\AmesomeCloud\Blog2Me"+"\\blog\\buildme.txt","rb")
+            f = open("/tmp/blog/"+path+".txt","rb")
+            self.wfile.write(f.read())
+            #self.wfile.write(getNumStr(bytes2str(f),"<br>",40).encode())
+            f.close()
+            return True
+        elif(ctype=='getpullupdate'):
+            self.send_response(200)   
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write("getpullupdate".encode())
+            url = 'http://127.0.0.1:5001'
+            myobj = {'somekey': 'somevalue'}    
+            x = requests.post(url, data = myobj)
+            return True
+
+    return False
+  except :
+    return False
+
+def create__filea(file_path,msg):
+    try:
+        f=open(file_path,"r+",encoding='utf-8')
+    except  Exception as e:
+        print(str(e))
+        f=open(file_path,"a+",encoding='utf-8')
+    content = f.read()
+    f.seek(0,0)
+    f.write('<br>')
+    f.write(msg)
+    f.write(content)
+    f.close()
+    print("save ok")
 def run():
     port = 5000
     server_address = ('', port)

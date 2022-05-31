@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>高效工作流程卡</title>
+  <link rel="stylesheet" href="../viewTheWorld/view.css">
+  <script src="../../data.js" type="text/javascript"></script>
+  <script src="./js/ModelJs.js" type="text/javascript" ></script>
+ </head>
+ <body>
+	<header>
+	</header>
+		<section class="purple-section">
+		<div class="wrapper">
+			<p>做自己时间分配的主人,目的在于建立可预测，可把控的效能感</p>
+			<p>温馨提醒，多喝水，脑袋更聪明，记得给手机充满电</p>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>当天计划的任务仪式</h3>
+					<p>我今天目测的任务集合有哪些，我要去做什么了</p>
+					<p></p>
+					<input type="text" height="300px" id="HighEffectCard_01" onkeydown="keydown('HighEffectCard_01')">
+					<button onclick="downloaddata('HighEffectCard_01')">当天计划的任务</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p></p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>任务的切换仪式</h3>
+					<p>请简要描述一下自己的任务吧</p>
+					<p></p>
+					<input type="text" height="300px" id="HighEffectCard_02" onkeydown="keydown('HighEffectCard_02')">
+					<button onclick="downloaddata('HighEffectCard_02')">任务的切换</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>记录整个过程</p>
+					</details>
+				</div>
+			</div>
+			<div class="card-group clearfix">
+				<div class="card">
+					<h3>任务总结仪式 </h3>
+					<p>对于该任务有什么要说的吗</p>
+					<p></p>
+					<input type="text" height="300px" id="HighEffectCard_03" onkeydown="keydown('HighEffectCard_03')">
+					<button onclick="downloaddata('HighEffectCard_03')">任务总结</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p>加油</p>
+					</details>
+				</div>
+				<div class="card">
+					<h3>当天总结仪式</h3>
+					<p>对于今天做的事以及明天的事做一个安排吧</p>
+					<input type="text" height="300px" id="HighEffectCard_04" onkeydown="keydown('HighEffectCard_04')">
+					<button onclick="downloaddata('HighEffectCard_04')">当天总结</button>
+					<details>
+						<summary>具体细节：</summary>
+						<p></p>
+					</details>
+				</div>
+			</div>
+			<div class="info"></div>
+		</div>
+		</section>
+	</div><!--内容结束-->
+
+	<footer><!--页脚开始-->	
+		<ul class="share-group">
+		</ul>
+		<div class="copy" >
+			<p>以流程优化学习</p>
+		</div>
+	</footer><!--页脚结束-->
+	</div>
+	</body>
+</html>
+

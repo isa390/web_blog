@@ -1,0 +1,8 @@
+getNextLine('blank00')+'function getNextLine(blankn){'+
+getNextLine('blank03')+'   var length = blankn.substring(blankn.length-1);'+
+getNextLine('blank03')+'   var output = '<br>';'+
+getNextLine('blank03')+'   for(i = 0;i< length;i++){'+
+getNextLine('blank06')+'      output+= '&nbsp;';'+
+getNextLine('blank03')+'   }'+
+getNextLine('blank03')+'   return output;'+
+getNextLine('blank00')+'}'+
