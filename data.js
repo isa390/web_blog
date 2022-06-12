@@ -5,3 +5,4 @@ function getURL(){
     console.log("//"+url);        
     return "https://"+url;            
 }
+  
